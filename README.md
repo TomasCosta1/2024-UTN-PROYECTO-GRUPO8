@@ -18,17 +18,24 @@ Antes de comenzar, asegurate de tener instalados los siguientes programas en tu 
 
 ### 1. **Correr el backend:** 
 Primero, abre una terminal en la carpeta `backend` y ejecuta el siguiente comando para iniciar el servidor del backend (asegúrate de que el puerto configurado sea el 3001): ```npm start ``` 
-### 2. **Correr el frontend:** En otra terminal, ve a la carpeta `frontend` y ejecuta el siguiente comando para iniciar la aplicación de React: ```npm start ``` Esto debería abrir la aplicación en tu navegador en `http://localhost:3000`. 
+### 2. **Correr el frontend:** 
+En otra terminal, ve a la carpeta `frontend` y ejecuta el siguiente comando para iniciar la aplicación de React: ```npm start ``` Esto debería abrir la aplicación en tu navegador en `http://localhost:3000`. 
 
 ## Trabajar con Git 
 
 ### Hacer cambios en tu rama 
-1. Asegúrate de estar en tu rama de trabajo: ```git checkout nombre-de-tu-rama ``` 
-2. Haz cambios en el código, y luego agrega y comitea los archivos modificados: ```git add . git commit -m "Descripción de los cambios" ``` 
-3. Para subir tus cambios al repositorio remoto, ejecuta: ```git push origin nombre-de-tu-rama ``` 
+1. Asegúrate de estar en tu rama de trabajo: 
+```git checkout nombre-de-tu-rama ``` 
+2. Haz cambios en el código, y luego agrega y comitea los archivos modificados: 
+```git add . ```
+```git commit -m "Descripción de los cambios" ``` 
+3. Para subir tus cambios al repositorio remoto, ejecuta: 
+```git push origin nombre-de-tu-rama ``` 
 ### Actualizar tu rama con los últimos cambios de `main` 
-1. Cambia a la rama `main` para asegurarte de tener la última versión: ```git checkout main git pull origin main ``` 
-2. Luego, vuelve a tu rama y actualízala con los cambios recientes de `main`: ```git checkout nombre-de-tu-rama git merge main ``` Resuelve cualquier conflicto si es necesario.
+1. Cambia a la rama `main` para asegurarte de tener la última versión: 
+```git checkout main git pull origin main ``` 
+2. Luego, vuelve a tu rama y actualízala con los cambios recientes de `main`: 
+```git checkout nombre-de-tu-rama git merge main ```
 
 ## Buenas prácticas 
 - Siempre trabaja en tu propia rama. 
