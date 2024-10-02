@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ProductDetail from './components/ProductDetail';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
     <div>
       <h1>Aplicacion para Restaurant</h1>
       <p>{message}</p>
+      <ProductDetail/>
     </div>
   );
 }
