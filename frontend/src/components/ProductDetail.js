@@ -23,9 +23,9 @@ const ProductDetail = () => {
           <ul>
             {productos.map(producto => (
               <li key={producto.id}>
-                <h2>{producto.nombre}</h2>
+                <h2>{producto.name}</h2>
                 <p>Precio: ${producto.price}</p>
-                <p>{producto.descripcion}</p>
+                <p>{producto.desc}</p>
               </li>
             ))}
           </ul>
