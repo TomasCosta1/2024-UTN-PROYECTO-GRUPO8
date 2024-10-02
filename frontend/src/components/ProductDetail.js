@@ -9,7 +9,7 @@ const ProductDetail = () => {
     useEffect(() => {
         // Simulando una llamada a una API
         const obtenerProductos = async () => {
-          const response = await fetch('../../../backend/back.json');
+          const response = await fetch(`http://localhost:3000/products/`);
           const data = await response.json();
           setProductos(data);
         };
@@ -34,6 +34,5 @@ const ProductDetail = () => {
 
 
 }
-console.log("../product.json")
 
 export default ProductDetail
