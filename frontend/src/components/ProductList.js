@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
 
 const ProductList = () => {
+  //Traigo los productos de la DB
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -14,9 +16,10 @@ const ProductList = () => {
   }, []);
 
   console.log(products);
+  // Filtro los productos por las categorias principales para poder mostrarlos en la lista de manera ordenada
   const starters = products.filter((product) => product.category === "Entrada");
   const mainCourses = products.filter(
-    (product) => product.category === "Plato Principal"
+    (product) => product.category === "PlatoPrincipal"
   );
   const desserts = products.filter((product) => product.category === "Postre");
   const drinks = products.filter((product) => product.category === "Bebida");
@@ -27,11 +30,7 @@ const ProductList = () => {
         <p>Entrada</p>
         <ul>
           {starters.map((product) => (
-            <li key={product.id}>
-              <h2>{product.name}</h2>
-              <p>Precio: ${product.price}</p>
-              <p>{product.desc}</p>
-            </li>
+            <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
@@ -39,11 +38,7 @@ const ProductList = () => {
         <p>Plato Principal</p>
         <ul>
           {mainCourses.map((product) => (
-            <li key={product.id}>
-              <h2>{product.name}</h2>
-              <p>Precio: ${product.price}</p>
-              <p>{product.desc}</p>
-            </li>
+            <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
@@ -51,11 +46,7 @@ const ProductList = () => {
         <p>Postre</p>
         <ul>
           {desserts.map((product) => (
-            <li key={product.id}>
-              <h2>{product.name}</h2>
-              <p>Precio: ${product.price}</p>
-              <p>{product.desc}</p>
-            </li>
+            <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
@@ -63,11 +54,7 @@ const ProductList = () => {
         <p>Bebida</p>
         <ul>
           {drinks.map((product) => (
-            <li key={product.id}>
-              <h2>{product.name}</h2>
-              <p>Precio: ${product.price}</p>
-              <p>{product.desc}</p>
-            </li>
+            <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
