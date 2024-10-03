@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import AdminPage from './pages/AdminPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import './App.css';
-
-function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:3000/')
-      .then((response) => response.text())
-      .then((data) => setMessage(data));
-  }, []);
-
+const App = () => {
   return (
-    <div>
-      <h1>Aplicacion para Restaurant</h1>
-      <p>{message}</p>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<AdminPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
