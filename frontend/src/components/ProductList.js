@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import '../styles/ProductList.css';
 
 const ProductList = () => {
   //Traigo los productos de la DB
@@ -27,32 +28,32 @@ const ProductList = () => {
   return (
     <div>
       <section>
-        <p>Entrada</p>
-        <ul>
+        <p className="title">Entradas</p>
+        <ul className="container">
           {starters.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
       <section>
-        <p>Plato Principal</p>
-        <ul>
+        <p className="title">Platos Principales</p>
+        <ul className="container">
           {mainCourses.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
       <section>
-        <p>Postre</p>
-        <ul>
+        <p className="title">Postres</p>
+        <ul className="container">
           {desserts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </ul>
       </section>
       <section>
-        <p>Bebida</p>
-        <ul>
+        <p className="title">Bebidas</p>
+        <ul className="container">
           {drinks.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
