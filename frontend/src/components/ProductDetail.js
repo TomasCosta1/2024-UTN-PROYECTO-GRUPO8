@@ -6,7 +6,11 @@ const ProductDetail = () => {
 
     useEffect(() => {
         const obtenerProductos = async () => {
+<<<<<<< HEAD
           const response = await fetch(`http://localhost:3000/products/2`);
+=======
+          const response = await fetch('http://localhost:3000/products');
+>>>>>>> main
           const data = await response.json();
           setProductos(data);
         };

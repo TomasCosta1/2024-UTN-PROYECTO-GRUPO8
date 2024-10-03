@@ -30,3 +30,6 @@ coverage/
 # Build system
 build/
 out/
+
+# Config files
+database.js
