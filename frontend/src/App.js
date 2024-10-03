@@ -3,17 +3,9 @@ import ProductDetail from './components/ProductDetail';
 import './App.css';
 
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:3001/')
-      .then((response) => response.text())
-      .then((data) => setMessage(data));
-  }, []);
 
   return (
     <div>
-      <h1>Aplicacion para Restaurant</h1>
       <ProductDetail/>
     </div>
   );

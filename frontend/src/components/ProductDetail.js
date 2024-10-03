@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 
- 
-// Declarar componentes
+
 const ProductDetail = () => {
-// declarar variables, funciones y return
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        // Simulando una llamada a una API
         const obtenerProductos = async () => {
-          const response = await fetch(`http://localhost:3000/products/`);
+          const response = await fetch(`http://localhost:3000/products/2`);
           const data = await response.json();
           setProductos(data);
         };
@@ -19,16 +16,23 @@ const ProductDetail = () => {
 
     return (
         <div>
-          <h1>Lista de Productos</h1>
-          <ul>
-            {productos.map(producto => (
-              <li key={producto.id}>
-                <h2>{producto.name}</h2>
-                <p>Precio: ${producto.price}</p>
-                <p>{producto.desc}</p>
-              </li>
-            ))}
-          </ul>
+          <img src={productos.image}/>
+          <h2>{productos.name}</h2> 
+          <p>{productos.desc}</p>
+          <h3>${productos.price}</h3>
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <button>Agregar{productos.price}</button>
         </div>
     );
 
