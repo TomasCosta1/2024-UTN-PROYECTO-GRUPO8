@@ -1,38 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/ProductDetail.css';
 
- 
-// Declarar componentes
-const ProductDetail = () => {
-// declarar variables, funciones y return
-    const [productos, setProductos] = useState([]);
+const ProductDetail = ({ productId }) => {
+    const [producto, setProducto] = useState(null);
 
     useEffect(() => {
-        // Simulando una llamada a una API
-        const obtenerProductos = async () => {
-          const response = await fetch('http://localhost:3000/products');
-          const data = await response.json();
-          setProductos(data);
+        const obtenerProducto = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/products/${productId}`);
+                const data = await response.json();
+                setProducto(data);
+            } catch (error) {
+                console.error('Error al obtener el producto:', error);
+            }
         };
 
-        obtenerProductos();
-    }, []);
+        obtenerProducto();
+    }, [productId]);
+
+    if (!producto) {
+        return <div>Cargando producto...</div>;
+    }
 
     return (
-        <div>
-          <h1>Lista de Productos</h1>
-          <ul>
-            {productos.map(producto => (
-              <li key={producto.id}>
-                <h2>{producto.nombre}</h2>
-                <p>Precio: ${producto.price}</p>
-                <p>{producto.descripcion}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <>
+            <div className="productDetail">
+                <section className="volver">
+                    <Link to="/" className="link">Volver al menú</Link>
+                </section>
+                {producto.img && <img src={producto.img} alt={producto.name} className="img" />}
+                <h2 className="h2">{producto.name}</h2>
+                <p>{producto.description}</p>
+                <p className='price'> ${producto.price} </p>
+                <section className="btns">
+                    <select className="select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <button className="btnAdd" onClick={() => console.log('Producto agregado al carrito')}>Agregar al carrito</button>
+                </section>
+            </div>
+        </>
     );
+};
 
-
-}
-
-export default ProductDetail
+export default ProductDetail;

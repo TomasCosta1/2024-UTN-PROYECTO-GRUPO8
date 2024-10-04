@@ -16,7 +16,7 @@ const ProductList = () => {
     getProducts();
   }, []);
 
-  console.log(products);
+  // console.log(products);
   // Filtro los productos por las categorias principales para poder mostrarlos en la lista de manera ordenada
   const starters = products.filter((product) => product.category === "Entrada");
   const mainCourses = products.filter(
