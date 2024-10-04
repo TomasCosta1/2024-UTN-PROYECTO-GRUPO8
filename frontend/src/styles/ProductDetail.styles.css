@@ -1,0 +1,92 @@
+.link{
+    background-color: white;
+    margin-left: 20px;
+    color: black;
+    padding: 17px 20px;
+    border-radius: 50px;
+    box-shadow: black 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 10px;
+    text-decoration: none;
+    transform: scale(1); 
+    margin-top: 10px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.volver{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.button {
+    background-color: black;
+    margin-left: 20px;
+    color: white;
+    padding: 17px 20px;
+    border-radius: 15px;
+    box-shadow: black 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 5%;
+    transform: scale(1); 
+    transition: all 0.5s ease;
+}
+
+.link:hover,
+.button:hover {
+    transform: scale(1.10);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.div {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.img {
+    width: 30%;
+    border-radius: 5%;
+}
+
+.p {
+    text-align: start;
+    width: 70%;
+}
+
+.h3 {
+    width: 70%;
+    font-size: 25px;
+}
+
+.section {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.select {
+    background-color: white;
+    margin-left: 20px;
+    color: black;
+    padding: 10px 10px;
+    border-radius: 15px;
+    box-shadow: 0 1px 7px 0 #635d5d;    
+    text-transform: uppercase;
+    font-size: 10px;
+    text-decoration: none;
+}
