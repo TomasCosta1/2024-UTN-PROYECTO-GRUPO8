@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/AdminPage.css';
 
 const AdminPage = () => {
     const [products, setProducts] = useState([]);
@@ -49,9 +50,9 @@ const AdminPage = () => {
     };
 
     return (
-        <div>
+        <div className='adminPage'>
             <h1>Seccion de Administracion</h1>
-            <div>
+            <div className='search'>
                 <input
                     type="text"
                     name="name"
@@ -81,17 +82,19 @@ const AdminPage = () => {
                     onChange={handleInputChange}
                 />
                 {isEditing ? (
-                    <button onClick={handleEditProduct}>Actualizar Producto</button>
+                    <button onClick={handleEditProduct} className='btnAdd'>Actualizar Producto</button>
                 ) : (
-                    <button onClick={handleAddProduct}>Agregar Producto</button>
+                    <button onClick={handleAddProduct} className='btnAdd'>Agregar Producto</button>
                 )}
             </div>
             <ul>
                 {products.map((product) => (
-                    <li key={product.id}>
+                    <li key={product.id} className='product'>
                         {product.name} - ${product.price}
-                        <button onClick={() => handleEditClick(product)}>Editar</button>
-                        <button onClick={() => handleDeleteProduct(product.id)}>Eliminar</button>
+                        <div>
+                            <button onClick={() => handleEditClick(product)} className='btnEdit'>Editar</button>
+                            <button onClick={() => handleDeleteProduct(product.id)} className='btnRemove'>Eliminar</button>
+                        </div>
                     </li>
                 ))}
             </ul>
