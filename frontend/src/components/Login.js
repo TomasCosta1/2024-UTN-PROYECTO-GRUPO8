@@ -7,19 +7,22 @@ import "../styles/Login.css";
 const Login = () => {
     return (
         <>
-            <div>
-                <section>
+            <div className='all'>
+                <section className='photo'>
                     <img src="../../favicon.ico" alt="logo" />
-                    <h1>Nombre del restaurant</h1>
                 </section>
-                <form className='formu'>
-                    <input type="text" placeholder="Usuario" />
-                    <input type="text" placeholder="Contraseña" />
-                    <button>Iniciar Sesión</button>
-                    <Link to={'/register'}>Registrarse</Link>
-                    <Link to={'/loginhelp'}>Olvidé mi contraseña</Link>
-                    <Link to={'/register'}>Registrarse</Link>
-                    <Link to={'/'}>Continuar como invitado</Link>
+                <form>
+                    <h2>Iniciar Sesión</h2>
+                    <input type="text" className="inputbox" placeholder="Usuario"  required />
+                    <input type="password" className="inputbox" placeholder="Contraseña" required />
+                <section className='continue-forgot'>
+                    <Link to={'/loginhelp'} className='forgot'>Olvidé mi contraseña</Link>
+                    <Link to={'/'} className='continue'>Continuar como invitado</Link>
+                </section>
+                <button type='submit' className='enter'>Iniciar Sesión</button>
+                <section className='register'>   
+                <p>¿No tiene cuenta?<Link to={'/register'} className='register-link'> Registrarse</Link></p>
+                </section>
                 </form>
             </div>
         </>
@@ -27,3 +30,5 @@ const Login = () => {
 }
 
 export default Login;
+
+// remember me? se pone en este caso?
