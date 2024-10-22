@@ -4,13 +4,13 @@ const router = express.Router();
 
 // Crear un nuevo producto
 router.post('/', async (req, res) => {
-    const { name, price, description, img } = req.body;
+    const { name, price, description, img, category } = req.body;
     
-    const query = 'INSERT INTO products (name, price, `description`, img) VALUES (?, ?, ?, ?)';
+    const query = 'INSERT INTO products (name, price, `description`, img, category) VALUES (?, ?, ?, ?, ?)';
     
     try {
-        const [result] = await pool.query(query, [name, price, description, img]);
-        const newProduct = { id: result.insertId, name, price, description, img };
+        const [result] = await pool.query(query, [name, price, description, img, category]);
+        const newProduct = { id: result.insertId, name, price, description, img, category };
         res.status(201).json(newProduct);
     } catch (error) {
         console.error('Error al crear el producto:', error);
@@ -63,17 +63,17 @@ router.patch('/:id', async (req, res) => {
         return res.status(400).json({ message: 'ID inválido' });
     }
     
-    const { name, price, description, img } = req.body;
-    const query = 'UPDATE products SET name = ?, price = ?, `description` = ?, img = ? WHERE id = ?';
+    const { name, price, description, img, category } = req.body;
+    const query = 'UPDATE products SET name = ?, price = ?, `description` = ?, img = ?, category = ? WHERE id = ?';
     
     try {
-        const [result] = await pool.query(query, [name, price, description, img, productId]);
+        const [result] = await pool.query(query, [name, price, description, img, category, productId]);
         
         if (result.affectedRows === 0) {
             return res.status(404).json({ message: 'Producto no encontrado' });
         }
         
-        res.status(200).json({ id: productId, name, price, description, img });
+        res.status(200).json({ id: productId, name, price, description, img, category });
     } catch (error) {
         console.error('Error al actualizar el producto:', error);
         res.status(500).json({ message: 'Error al actualizar el producto', error: error.message });

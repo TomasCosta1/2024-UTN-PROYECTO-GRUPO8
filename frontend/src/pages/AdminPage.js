@@ -4,7 +4,7 @@ import '../styles/AdminPage.css';
 
 const AdminPage = () => {
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState({ id: '', name: '', desc: '', img: '', price: '' });
+    const [product, setProduct] = useState({ id: '', name: '', desc: '', img: '', price: '', category: '' });
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
@@ -29,13 +29,13 @@ const AdminPage = () => {
     const handleAddProduct = async () => {
         await axios.post('http://localhost:3000/products', product);
         fetchProducts();
-        setProduct({ id: '', name: '', desc: '', img: '', price: '' });
+        setProduct({ id: '', name: '', desc: '', img: '', price: '', category: '' });
     };
 
     const handleEditProduct = async () => {
         await axios.patch(`http://localhost:3000/products/${product.id}`, product);
         fetchProducts();
-        setProduct({ id: '', name: '', desc: '', img: '', price: '' });
+        setProduct({ id: '', name: '', desc: '', img: '', price: '' , category: ''});
         setIsEditing(false);
     };
 
@@ -81,6 +81,13 @@ const AdminPage = () => {
                     value={product.price}
                     onChange={handleInputChange}
                 />
+                <select name="category" value={product.category} onChange={handleInputChange}>
+                    <option value="" disabled>Selecciona una categoría</option>
+                    <option value="Entrada">Entrada</option>
+                    <option value="PlatoPrincipal">Plato Principal</option>
+                    <option value="Postre">Postre</option>
+                    <option value="Bebida">Bebida</option>
+                </select>
                 {isEditing ? (
                     <button onClick={handleEditProduct} className='btnAdd'>Actualizar Producto</button>
                 ) : (
