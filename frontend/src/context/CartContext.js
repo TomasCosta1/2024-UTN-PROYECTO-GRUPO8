@@ -14,10 +14,6 @@ export const CartProvider = ({ children }) => {
     });
     setQty(firstQty);
   }, [cart]);
-  
-  useEffect(() => {
-    console.log("Carrito actualizado:", cart);
-  }, [cart]);  
 
   useEffect(() => {
     let firstTotal = 0;
@@ -55,7 +51,6 @@ export const CartProvider = ({ children }) => {
       setCart(auxCart);
     } else {
       setCart([...cart, { ...product, qty: quantity }]);
-      console.log(product, quantity);
     }
   };
   

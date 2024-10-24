@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ProductCard from "./ProductCard";
 import '../styles/ProductList.css';
 import CartWidget from "./CartWidget";
+import { CartContext } from "../context/CartContext";
 
 const ProductList = () => {
   //Traigo los productos de la DB
   const [products, setProducts] = useState([]);
+  const { total } = useContext(CartContext);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -60,7 +62,8 @@ const ProductList = () => {
           ))}
         </ul>
       </section>
-      <CartWidget />
+      {total ? <CartWidget /> : null}
+      
     </div>
   );
 };

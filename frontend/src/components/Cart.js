@@ -82,7 +82,7 @@ const Cart = () => {
               className="cartDelete"
               onClick={() => removeProduct(product.id)}
             >
-              <i class="fa-solid fa-trash-can trashCan"></i>
+              <i className="fa-solid fa-trash-can trashCan"></i>
             </button>
           </div>
         ))}
