@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import '../styles/ProductList.css';
+import CartWidget from "./CartWidget";
 
 const ProductList = () => {
   //Traigo los productos de la DB
@@ -59,6 +60,7 @@ const ProductList = () => {
           ))}
         </ul>
       </section>
+      <CartWidget />
     </div>
   );
 };

@@ -23,7 +23,7 @@ const Footer = () => {
             <div className="footerBottom">
                 <p>&copy; {new Date().getFullYear()} Grupo 8. Todos los derechos reservados.</p>
             </div>
-            <script src="https://kit.fontawesome.com/50303851c6.js" crossorigin="anonymous"></script>
+            <script src="https://kit.fontawesome.com/50303851c6.js" crossOrigin="anonymous"></script>
         </footer>
     );
 };

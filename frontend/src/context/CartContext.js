@@ -14,6 +14,10 @@ export const CartProvider = ({ children }) => {
     });
     setQty(firstQty);
   }, [cart]);
+  
+  useEffect(() => {
+    console.log("Carrito actualizado:", cart);
+  }, [cart]);  
 
   useEffect(() => {
     let firstTotal = 0;
@@ -21,7 +25,8 @@ export const CartProvider = ({ children }) => {
       firstTotal += product.qty * product.price;
     });
     setTotal(firstTotal);
-  }, [qty]);
+  }, [cart, qty]);
+  
 
   const add1Product = (product) => {
     product.qty = product.qty + 1;
@@ -41,18 +46,19 @@ export const CartProvider = ({ children }) => {
 
   const addProduct = (product, quantity) => {
     if (isInCart(product.id)) {
-      const auxCart = [...cart];
-      for (const auxProduct of auxCart) {
+      const auxCart = cart.map(auxProduct => {
         if (auxProduct.id === product.id) {
-          auxProduct.qty = auxProduct.qty + quantity;
+          return { ...auxProduct, qty: auxProduct.qty + quantity };
         }
-      }
+        return auxProduct;
+      });
       setCart(auxCart);
     } else {
       setCart([...cart, { ...product, qty: quantity }]);
-      setQty(qty + quantity);
+      console.log(product, quantity);
     }
   };
+  
 
   const removeProduct = (id) => {
     setCart(cart.filter((product) => product.id !== id));
