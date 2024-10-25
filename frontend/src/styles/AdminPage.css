@@ -71,3 +71,17 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.adminPage .btnDefault{
+    background-color: rgb(114, 114, 251);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.adminPage .btnDefault:hover{
+    background-color: rgb(60, 60, 182);
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AdminPage.css';
 
-const AdminPage = () => {
+const ProductsAdminPage = () => {
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({ id: '', name: '', desc: '', img: '', price: '', category: '' });
     const [isEditing, setIsEditing] = useState(false);
@@ -109,4 +109,4 @@ const AdminPage = () => {
     );
 };
 
-export default AdminPage;
+export default ProductsAdminPage;
