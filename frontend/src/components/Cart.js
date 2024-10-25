@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import axios from 'axios';
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Cart.css";
 
@@ -9,20 +9,24 @@ const Cart = () => {
     useContext(CartContext);
 
   const [products, setProducts] = useState([]);
-  const [order, setOrder] = useState({id_client:'', id_table:'', total:''})
+  const [order, setOrder] = useState({
+    id_client: "",
+    id_table: "",
+    total: "",
+  });
 
   const createOrder = async () => {
     const order = {
       id_client: 1,
       id_table: 1,
-      total: total
+      total: total,
     };
     setOrder(order);
-    const response = await axios.post('http://localhost:3000/orders', order);
+    const response = await axios.post("http://localhost:3000/orders", order);
     const createdOrder = response.data;
     console.log(createdOrder);
-    sendInfo(createdOrder.id)
-  }
+    sendInfo(createdOrder.id);
+  };
 
   const sendInfo = async (orderId) => {
     cart.forEach((product) => {
@@ -42,12 +46,17 @@ const Cart = () => {
         quantity: product.quantity,
         totalPrice: product.totalPrice,
       };
-      await axios.post('http://localhost:3000/orderDetails', orderDetail);
+      await axios.post("http://localhost:3000/orderDetails", orderDetail);
     });
   };
 
   return (
     <>
+      <section className="volver">
+        <Link to="/" className="link">
+          Volver al menú
+        </Link>
+      </section>
       <div className="cartContainer">
         <div className="titlesContainer">
           <p>Producto</p>

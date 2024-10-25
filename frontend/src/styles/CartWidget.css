@@ -5,7 +5,6 @@
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    padding: 10px;
     background-color: black;
     color: white;
     font-weight: bold;
@@ -15,4 +14,10 @@
     z-index: 1000;
     font-size: 20px;
     width: 25%;
+}
+
+@media (max-width: 768px) {
+    .widget {
+        width: 65%;
+    }
 }
