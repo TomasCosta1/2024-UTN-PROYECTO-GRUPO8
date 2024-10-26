@@ -87,21 +87,28 @@ router.delete('/:id', async (req, res) => {
     if (isNaN(orderId)) {
         return res.status(400).json({ message: 'ID inválido' });
     }
-    
-    const query = 'DELETE FROM orders WHERE id = ?';
-    
+
+    // Eliminamos los detalles de la orden relacionados
+    const deleteOrderDetailsQuery = 'DELETE FROM orderDetails WHERE id_order = ?';
+    const deleteOrderQuery = 'DELETE FROM orders WHERE id = ?';
+
     try {
-        const [result] = await pool.query(query, [orderId]);
-        
-        if (result.affectedRows === 0) {
+        const [detailsResult] = await pool.query(deleteOrderDetailsQuery, [orderId]);
+        const [orderResult] = await pool.query(deleteOrderQuery, [orderId]);
+
+        if (orderResult.affectedRows === 0) {
             return res.status(404).json({ message: 'Orden no encontrada' });
         }
-        
-        res.status(200).json({ message: `Orden con ID ${orderId} eliminada exitosamente` });
+
+        res.status(200).json({ 
+            message: `Orden con ID ${orderId} eliminada exitosamente`,
+            deletedOrderDetails: detailsResult.affectedRows
+        });
     } catch (error) {
         console.error('Error al eliminar la orden:', error);
         res.status(500).json({ message: 'Error al eliminar la orden', error: error.message });
     }
 });
+
 
 module.exports = router;

@@ -19,36 +19,33 @@ const Cart = () => {
     const order = {
       id_client: 1,
       id_table: 1,
-      total: total,
+      totalPrice: total,
     };
     setOrder(order);
     const response = await axios.post("http://localhost:3000/orders", order);
     const createdOrder = response.data;
     console.log(createdOrder);
-    sendInfo(createdOrder.id);
+    sendInfo(Number(createdOrder.id));
   };
 
   const sendInfo = async (orderId) => {
-    cart.forEach((product) => {
-      setProducts([
-        ...products,
-        {
-          product_id: product.id,
-          quantity: product.qty,
-          totalPrice: product.price * product.qty,
-        },
-      ]);
-    });
-    products.forEach(async (product) => {
+    const newProducts = cart.map((product) => ({
+      id_product: product.id,
+      quantity: product.qty,
+      totalPrice: product.price * product.qty,
+    }));
+  
+    for (const product of newProducts) {
       const orderDetail = {
-        order_id: orderId,
-        product_id: product.product_id,
+        id_order: orderId,
+        id_product: product.id_product,
         quantity: product.quantity,
         totalPrice: product.totalPrice,
       };
       await axios.post("http://localhost:3000/orderDetails", orderDetail);
-    });
+    }
   };
+  
 
   return (
     <>
@@ -98,7 +95,7 @@ const Cart = () => {
       </div>
       <div className="totalContainer">
         <p className="totalCart">Total: ${total.toFixed(2)}</p>
-        <button className="checkoutButton">Realizar Pedido</button>
+        <button className="checkoutButton" onClick={createOrder}>Realizar Pedido</button>
         <button onClick={clearCart} className="vaciarCarrito">
           Vaciar Carrito
         </button>
