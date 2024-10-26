@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/ProductDetail.css';
+import { CartContext } from '../context/CartContext';
+import ItemCount from './ItemCount';
 
 const ProductDetail = ({ productId }) => {
     const [producto, setProducto] = useState(null);
+
+    const {addProduct} = useContext(CartContext);
 
     useEffect(() => {
         const obtenerProducto = async () => {
@@ -23,6 +27,10 @@ const ProductDetail = ({ productId }) => {
         return <div>Cargando producto...</div>;
     }
 
+    const onAdd = (quantity) => {
+        addProduct(producto, quantity);
+    }
+
     return (
         <>
             <div className="productDetail">
@@ -33,7 +41,7 @@ const ProductDetail = ({ productId }) => {
                 <h2 className="h2">{producto.name}</h2>
                 <p>{producto.description}</p>
                 <p className='price'> ${producto.price} </p>
-                <section className="btns">
+                {/* <section className="btns">
                     <select className="select">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -43,7 +51,8 @@ const ProductDetail = ({ productId }) => {
                         <option value="6">6</option>
                     </select>
                     <button className="btnAdd" onClick={() => console.log('Producto agregado al carrito')}>Agregar al carrito</button>
-                </section>
+                </section> */}
+                <ItemCount onAdd={onAdd}/>
             </div>
         </>
     );

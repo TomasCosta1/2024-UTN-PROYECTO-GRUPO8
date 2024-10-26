@@ -1,0 +1,206 @@
+.volver {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.volver .link {
+  text-decoration: none;
+  background-color: transparent;
+  color: #1c5985;
+  margin: 10px 0px 0px 10px;
+  padding: 15px 25px;
+  border: 1px solid #1c5985;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.link:hover {
+  background-color: #1c5985;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.cartContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas, 1 fracción cada una */
+  gap: 20px; /* Espacio entre las filas */
+}
+
+.titlesContainer {
+  display: contents; /* Para que los títulos se alineen en la misma grilla */
+  font-weight: bold;
+  text-align: center;
+}
+
+.productContainer {
+  display: contents; /* Para que los productos también se alineen en la misma grilla */
+  text-align: center;
+}
+
+.qtyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qtyButton {
+  margin: 0 10px;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.qtyButton:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.qty {
+  width: 40px;
+  text-align: center;
+}
+
+.cartPrice,
+.cartDelete {
+  text-align: center;
+}
+
+.qtyButton:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.cartDelete {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  justify-self: center;
+  align-self: center;
+  width: 50px;
+  height: 50px;
+}
+
+.cartDelete:hover {
+  background-color: rgb(198, 22, 22);
+  cursor: pointer;
+}
+
+.trashCan {
+  font-size: 25px;
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.totalCart {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.checkoutButton {
+  background-color: rgb(68, 189, 68);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.checkoutButton:hover {
+  background-color: rgb(50, 138, 50);
+  cursor: pointer;
+}
+
+.vaciarCarrito {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: grey;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  margin-bottom: 50px;
+}
+
+.vaciarCarrito:hover {
+  color: black;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .cartContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto; /* Mantén las 5 columnas, ajustando el tamaño */
+    gap: 10px; /* Espacio reducido para móviles */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+  }
+
+  .titlesContainer {
+    display: contents; /* Mantenemos los títulos visibles */
+    font-size: 14px; /* Reduce el tamaño de los títulos para ahorrar espacio */
+    text-align: center;
+  }
+
+  .productContainer {
+    display: contents; /* Mantenemos el contenido en la grilla horizontal */
+  }
+
+  .qtyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .qtyButton {
+    padding: 0 8px;
+    font-size: 14px; /* Botones más pequeños para móviles */
+    width: 20px;
+    height: 20px;
+    margin: 0;
+  }
+
+  .qty {
+    width: 30px; /* Reducimos el tamaño del contador de cantidad */
+    font-size: 14px;
+  }
+
+  .cartPrice {
+    text-align: center;
+    font-size: 14px; /* Reduce el tamaño del precio */
+  }
+
+  .cartDelete {
+    justify-self: center;
+    align-self: center;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px; /* Mantén el ancho ajustado al contenido */
+    height: 30px;
+    font-size: 14px; /* Texto más pequeño */
+  }
+
+  .cartDelete:hover {
+    background-color: #ff3333;
+  }
+
+  .trashCan {
+    font-size: 20px; /* Reduce el tamaño del icono */
+  }
+}

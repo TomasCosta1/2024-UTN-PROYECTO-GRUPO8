@@ -6,10 +6,13 @@ import ProductsAdminPage from './pages/ProductsAdminPage';
 import ProductPage from './pages/ProductPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import CartPage from "./pages/CartPage";
+import { CartProvider } from "./context/CartContext";
 
 const App = () => {
   return (
     <Router>
+      <CartProvider>
       <div>
         <Header />
         <Routes>
@@ -17,9 +20,11 @@ const App = () => {
           <Route path="/admin" element={<HomeAdminPage />} />
           <Route path="/admin/Products" element={<ProductsAdminPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Footer />
       </div>
+      </CartProvider>
     </Router>
   );
 };
