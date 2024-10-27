@@ -51,7 +51,7 @@ const ProductsAdminPage = () => {
 
     return (
         <div className='adminPage'>
-            <h1>Seccion de Administracion</h1>
+            <h1 className='title'>Administracion de Productos</h1>
             <div className='search'>
                 <input
                     type="text"
@@ -97,10 +97,12 @@ const ProductsAdminPage = () => {
             <ul>
                 {products.map((product) => (
                     <li key={product.id} className='product'>
-                        {product.name} - ${product.price}
-                        <div>
-                            <button onClick={() => handleEditClick(product)} className='btnEdit'>Editar</button>
-                            <button onClick={() => handleDeleteProduct(product.id)} className='btnRemove'>Eliminar</button>
+                        <div className='mainInfo'>
+                            {product.name} - ${product.price}
+                            <div>
+                                <button onClick={() => handleEditClick(product)} className='btnEdit'>Editar</button>
+                                <button onClick={() => handleDeleteProduct(product.id)} className='btnRemove'>Eliminar</button>
+                            </div>
                         </div>
                     </li>
                 ))}

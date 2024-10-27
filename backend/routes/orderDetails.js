@@ -55,6 +55,25 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// Obtener todas las orderDetails por id_orden
+router.get('/order/:id', async (req, res) => {
+    const orderId = parseInt(req.params.id);
+    
+    if (isNaN(orderId)) {
+        return res.status(400).json({ message: 'ID inválido' });
+    }
+    
+    const query = 'SELECT * FROM orderDetails WHERE id_order = ?';
+    
+    try {
+        const [results] = await pool.query(query, [orderId]);
+        res.status(200).json(results);
+    } catch (error) {
+        console.error('Error al buscar las orderDetail:', error);
+        res.status(500).json({ message: 'Error al buscar las orderDetail', error: error.message });
+    }
+});
+
 // Actualizar una orderDetails por ID
 router.patch('/:id', async (req, res) => {
     const orderDetailId = parseInt(req.params.id);
