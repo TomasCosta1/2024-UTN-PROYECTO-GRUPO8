@@ -1,26 +1,33 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../styles/Login.css";
-import axios from 'axios';
 
 
 
 const Login = () => {
-    const [user, setUser ] = useState(null)
-    const [pass, setPass ] = useState(null)
+    const navigate = useNavigate()
 
     const checkData = async (e) => {
         e.preventDefault()
-        const userInput = document.getElementById("user")
-        const passInput = document.getElementById("pass")
-        setUser("userInput.value")
-        setPass("passInput.value")
-        const data = {
-            email: user,
-            pass: pass
+        const userInput = document.getElementById("user").value
+        const passInput = document.getElementById("pass").value
+        const loginData = {
+            email: userInput,
+            pass: passInput
         }
-        await axios.get("http://localhost:3000/checkLogin", data)
+        console.log(loginData);
+        
+        const response = await fetch(`http://localhost:3000/login/${loginData.email}/${loginData.pass}`);
+        const data = await response.json()
+        console.log(data.success)
+        if (data.success) {
+            navigate("/")
+        } else {
+            alert("Credenciales invalidas.")
+        }
+
     }
+
 
     return (
         <div className='bodyLogin'>

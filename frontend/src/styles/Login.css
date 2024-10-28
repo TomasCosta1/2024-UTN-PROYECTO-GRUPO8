@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    min-height: 80vh;
+    min-height: 100vh;
     background: url(../components/Assets/uma-mesa-com-uma-colher-e-uma-colher-sobre-ela_9493-80857.avif);
     background-position: center;
     background-size: cover;

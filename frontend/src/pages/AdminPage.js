@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const AdminPage = () => {
     const [products, setProducts] = useState([]);
@@ -49,6 +51,8 @@ const AdminPage = () => {
     };
 
     return (
+        <>
+        <Header/>
         <div>
             <h1>Seccion de Administracion</h1>
             <div>
@@ -96,6 +100,8 @@ const AdminPage = () => {
                 ))}
             </ul>
         </div>
+        <Footer/>
+        </>
     );
 };
 
