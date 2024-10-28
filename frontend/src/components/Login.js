@@ -6,7 +6,7 @@ import "../styles/Login.css";
 
 const Login = () => {
     return (
-        <>
+        <div className='bodyLogin'>
             <div className='all'>
                 <section className='photo'>
                     <img src="../../favicon.ico" alt="logo" />
@@ -25,7 +25,7 @@ const Login = () => {
                 </section>
                 </form>
             </div>
-        </>
+        </div>
     );
 }
 

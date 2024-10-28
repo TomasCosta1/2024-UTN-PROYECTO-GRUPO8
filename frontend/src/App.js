@@ -11,12 +11,14 @@ const App = () => {
   return (
     <Router>
       <div>
+        <Header/>
         <Routes>
           <Route path="/login" element={<LoginPage />} />  /*tengo que sacarle el footer y el Header*/
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
         </Routes>
+        <Footer/>
       </div>
     </Router>
   );
