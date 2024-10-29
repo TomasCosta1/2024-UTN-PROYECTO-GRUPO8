@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../styles/AdminPage.css';
 
 const ProductsAdminPage = () => {
@@ -50,6 +52,8 @@ const ProductsAdminPage = () => {
     };
 
     return (
+        <>
+        <Header/>
         <div className='adminPage'>
             <h1 className='title'>Administracion de Productos</h1>
             <div className='search'>
@@ -94,7 +98,7 @@ const ProductsAdminPage = () => {
                     <button onClick={handleAddProduct} className='btnAdd'>Agregar Producto</button>
                 )}
             </div>
-            <ul>
+            <ul className='listResult'>
                 {products.map((product) => (
                     <li key={product.id} className='product'>
                         <div className='mainInfo'>
@@ -108,6 +112,8 @@ const ProductsAdminPage = () => {
                 ))}
             </ul>
         </div>
+        <Footer/>
+        </>
     );
 };
 

@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import "../styles/Cart.css";
 
 const Cart = () => {
+  const navigate = useNavigate()
   const { cart, removeProduct, add1Product, sub1Product, total, clearCart } =
     useContext(CartContext);
 
@@ -26,6 +27,9 @@ const Cart = () => {
     const createdOrder = response.data;
     console.log(createdOrder);
     sendInfo(Number(createdOrder.id));
+    alert("Pedido realizado con éxito");
+    clearCart();
+    navigate("/")
   };
 
   const sendInfo = async (orderId) => {

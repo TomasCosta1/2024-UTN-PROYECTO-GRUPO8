@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AdminPage.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const HomeAdminPage = () => {
     const [orders, setOrders] = useState([]);
@@ -52,9 +54,10 @@ const HomeAdminPage = () => {
 
     return (
         <div className='adminPage'>
+        <Header />
         <h2 className='title'>Home Admin</h2>
         <div>
-            <ul>
+            <ul className='listResult'>
                 {orders.map((order) => (
                     <li key={order.id} className='product'>
                         <div className='mainInfo'>
@@ -66,7 +69,7 @@ const HomeAdminPage = () => {
                                 <button onClick={() => handleDeleteOrder(order.id)} className='btnRemove'>Eliminar</button>
                             </div>
                         </div>
-                        {visibleDetails[order.id] && ( // Mostrar detalles si está visible
+                        {visibleDetails[order.id] && (
                             <div className='orderDetail'>
                                 <div className="gridContainer">
                                     <div className="gridHeader">Nombre</div>
@@ -87,6 +90,7 @@ const HomeAdminPage = () => {
             </ul>
             <a href="/admin/products" className='btnDefault'>Administrar Productos</a>
         </div>
+        <Footer />
     </div>
     );
 };

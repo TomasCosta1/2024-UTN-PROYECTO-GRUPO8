@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../styles/ProductDetail.css';
 import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = ({ productId }) => {
     const [producto, setProducto] = useState(null);
@@ -28,7 +30,9 @@ const ProductDetail = ({ productId }) => {
     }
 
     const onAdd = (quantity) => {
+        const notify = () => toast.success(`Agregaste ${quantity} ${producto.name} al carrito`, {theme  : "colored"});
         addProduct(producto, quantity);
+        notify();
     }
 
     return (
@@ -41,18 +45,8 @@ const ProductDetail = ({ productId }) => {
                 <h2 className="h2">{producto.name}</h2>
                 <p>{producto.description}</p>
                 <p className='price'> ${producto.price} </p>
-                {/* <section className="btns">
-                    <select className="select">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                    <button className="btnAdd" onClick={() => console.log('Producto agregado al carrito')}>Agregar al carrito</button>
-                </section> */}
                 <ItemCount onAdd={onAdd}/>
+                <ToastContainer />
             </div>
         </>
     );
