@@ -6,6 +6,9 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState(0);
   const [total, setTotal] = useState(0);
+  const [pago, setPago] = useState(false);
+  const [orderNumber, setOrderNumber] = useState(0);
+  const [orderState, setOrderState] = useState('');
 
   useEffect(() => {
     let firstQty = 0;
@@ -64,18 +67,35 @@ export const CartProvider = ({ children }) => {
     setQty(0);
   };
 
+  const handlePaymentState = () => {
+    setPago(true);
+  }
+
+  const handleOrderNumber = (id) => {
+    setOrderNumber(id);
+  }
+
+  const handleOrderState = (state) => {
+    setOrderState(state);
+  }
   return (
     <CartContext.Provider
       value={{
         cart,
         qty,
         total,
+        pago,
+        orderNumber,
+        orderState,
         add1Product,
         sub1Product,
         isInCart,
         addProduct,
         removeProduct,
         clearCart,
+        handlePaymentState,
+        handleOrderNumber,
+        handleOrderState
       }}
     >
         {children}

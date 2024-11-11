@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../styles/AdminPage.css';
 
-const AdminPage = () => {
+const ProductsAdminPage = () => {
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({ id: '', name: '', desc: '', img: '', price: '', category: '' });
     const [isEditing, setIsEditing] = useState(false);
@@ -50,8 +52,10 @@ const AdminPage = () => {
     };
 
     return (
+        <>
+        <Header/>
         <div className='adminPage'>
-            <h1>Seccion de Administracion</h1>
+            <h1 className='title'>Administracion de Productos</h1>
             <div className='search'>
                 <input
                     type="text"
@@ -94,19 +98,23 @@ const AdminPage = () => {
                     <button onClick={handleAddProduct} className='btnAdd'>Agregar Producto</button>
                 )}
             </div>
-            <ul>
+            <ul className='listResult'>
                 {products.map((product) => (
                     <li key={product.id} className='product'>
-                        {product.name} - ${product.price}
-                        <div>
-                            <button onClick={() => handleEditClick(product)} className='btnEdit'>Editar</button>
-                            <button onClick={() => handleDeleteProduct(product.id)} className='btnRemove'>Eliminar</button>
+                        <div className='mainInfo'>
+                            {product.name} - ${product.price}
+                            <div>
+                                <button onClick={() => handleEditClick(product)} className='btnEdit'>Editar</button>
+                                <button onClick={() => handleDeleteProduct(product.id)} className='btnRemove'>Eliminar</button>
+                            </div>
                         </div>
                     </li>
                 ))}
             </ul>
         </div>
+        <Footer/>
+        </>
     );
 };
 
-export default AdminPage;
+export default ProductsAdminPage;

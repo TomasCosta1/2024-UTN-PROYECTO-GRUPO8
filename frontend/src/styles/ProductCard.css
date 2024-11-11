@@ -16,6 +16,11 @@
     overflow: hidden;
 }
 
+.cardList .card:hover {
+    box-shadow: 0 2px 7px 0 #bfbfbf;
+    transition: all 300ms ease-in-out;
+}
+
 .cardList .imgContainer {
     display: flex;
     justify-content: center;
