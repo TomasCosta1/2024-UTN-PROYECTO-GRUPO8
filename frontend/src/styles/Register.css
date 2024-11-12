@@ -1,0 +1,107 @@
+/* src/styles.css */
+
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Fondo con imagen */
+.background {
+    background-image: url(../components/Assets/uma-mesa-com-uma-colher-e-uma-colher-sobre-ela_9493-80857.avif);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Contenedor del formulario */
+.register-container {
+    background: transparent; /* Fondo semitransparente */
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+
+.register-container h2 {
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+/* Estilo de los grupos de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    background: transparent;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: #fff;
+}
+
+
+.input-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -8px;
+    left: 10px;
+    font-size: 0.75rem;
+    color: #4CAF50;
+}
+
+/* Estilo del texto del placeholder */
+.input-group input::placeholder {
+    color: #bbb;
+    font-style: italic; /* Hace que el texto sea cursivo */
+    opacity: 1; /* Asegura que la opacidad esté al 100% */
+}
+
+
+/* Botón de registro */
+form button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
