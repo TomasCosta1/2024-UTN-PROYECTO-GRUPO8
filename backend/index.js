@@ -6,6 +6,7 @@ const loginRoutes = require('./routes/login');
 const ordersRoutes = require('./routes/orders');
 const orderDetailsRoutes = require('./routes/orderDetails');
 const paymentRoutes = require('./routes/payment');
+const endDayRoutes = require('./routes/endDay');
 
 const app = express();
 const port = 3000;
@@ -17,7 +18,8 @@ app.use('/products', productRoutes);
 app.use('/login', loginRoutes)
 app.use('/orders', ordersRoutes);
 app.use('/orderDetails', orderDetailsRoutes);
-app.use('/payment', paymentRoutes)
+app.use('/payment', paymentRoutes);
+app.use('/endDay', endDayRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is running');

@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import CartPage from "./pages/CartPage";
 import PaymentPage from './pages/PaymentPage';
 import ClientOrderPage from './pages/OrderPage';
+import EndDayPage from './pages/EndDayPage';
 import { CartProvider } from "./context/CartContext";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path='/payment' element={<PaymentPage />} />
           <Route path='/clientOrder' element={<ClientOrderPage />} />
+          <Route path='/endDay' element={<EndDayPage />} />
         </Routes>
 
       </div>
