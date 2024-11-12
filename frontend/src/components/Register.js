@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Register = () => {
     const [form, setForm] = useState({
-        name: "",
+        nombreCompleto: "",
         email: "",
         password: ""
     });

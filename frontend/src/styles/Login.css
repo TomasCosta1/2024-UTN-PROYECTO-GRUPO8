@@ -107,12 +107,13 @@ form button:active {
     color: #fff;
 }
 
-.extra p .register-link{
+.extra p, .register-link{
     color: #fff;
     text-decoration: none;
     font-weight: 600;
     margin: 0;
     box-sizing: border-box;
+    margin-bottom: 20px;
 }
 .extra p .register-link:hover{
     text-decoration: underline;
