@@ -5,10 +5,9 @@ import HomeAdminPage from './pages/HomeAdminPage';
 import ProductsAdminPage from './pages/ProductsAdminPage';
 import ProductPage from './pages/ProductPage';
 import LoginPage from './pages/LoginPage';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
 import CartPage from "./pages/CartPage";
+import PaymentPage from './pages/PaymentPage';
+import ClientOrderPage from './pages/OrderPage';
 import { CartProvider } from "./context/CartContext";
 
 const App = () => {
@@ -17,12 +16,14 @@ const App = () => {
       <CartProvider>
       <div>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />  /*tengo que sacarle el footer y el Header*/
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<HomeAdminPage />} />
           <Route path="/admin/Products" element={<ProductsAdminPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path='/payment' element={<PaymentPage />} />
+          <Route path='/clientOrder' element={<ClientOrderPage />} />
         </Routes>
 
       </div>

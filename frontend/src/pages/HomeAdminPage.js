@@ -56,7 +56,7 @@ const HomeAdminPage = () => {
         <div className='adminPage'>
         <Header />
         <h2 className='title'>Home Admin</h2>
-        <div>
+        <section>
             <ul className='listResult'>
                 {orders.map((order) => (
                     <li key={order.id} className='product'>
@@ -89,7 +89,11 @@ const HomeAdminPage = () => {
                 ))}
             </ul>
             <a href="/admin/products" className='btnDefault'>Administrar Productos</a>
-        </div>
+        </section>
+        <section>
+            <h2 className='title'>Administrar Mesas</h2>
+            <p>En construcción...</p>
+        </section>
         <Footer />
     </div>
     );

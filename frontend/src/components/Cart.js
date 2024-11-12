@@ -1,20 +1,23 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import axios from "axios";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Cart.css";
 
 const Cart = () => {
-  const navigate = useNavigate()
-  const { cart, removeProduct, add1Product, sub1Product, total, clearCart } =
-    useContext(CartContext);
+  const navigate = useNavigate();
+  const {
+    cart,
+    removeProduct,
+    add1Product,
+    sub1Product,
+    total,
+    clearCart,
+    handleOrderNumber,
+    handleOrderState,
+  } = useContext(CartContext);
 
-  const [products, setProducts] = useState([]);
-  const [order, setOrder] = useState({
-    id_client: "",
-    id_table: "",
-    total: "",
-  });
+  const [paymentOption, setPaymentOption] = useState("");
 
   const createOrder = async () => {
     const order = {
@@ -22,14 +25,12 @@ const Cart = () => {
       id_table: 1,
       totalPrice: total,
     };
-    setOrder(order);
     const response = await axios.post("http://localhost:3000/orders", order);
     const createdOrder = response.data;
-    console.log(createdOrder);
     sendInfo(Number(createdOrder.id));
-    alert("Pedido realizado con éxito");
+    handleOrderNumber(Number(createdOrder.id));
     clearCart();
-    navigate("/")
+    navigate("/clientOrder");
   };
 
   const sendInfo = async (orderId) => {
@@ -38,7 +39,7 @@ const Cart = () => {
       quantity: product.qty,
       totalPrice: product.price * product.qty,
     }));
-  
+
     for (const product of newProducts) {
       const orderDetail = {
         id_order: orderId,
@@ -49,7 +50,28 @@ const Cart = () => {
       await axios.post("http://localhost:3000/orderDetails", orderDetail);
     }
   };
-  
+
+  const redirectPayment = () => {
+    if (paymentOption === "efectivo") {
+      handleOrderState("pending");
+      createOrder();
+    }
+    if (paymentOption === "tarjeta") {
+      navigate("/payment");
+    }
+    if (paymentOption === "") {
+      document.querySelector("#alert").classList.remove("alertDisabled");
+      document.querySelector("#alert").classList.add("alertEnabled");
+    }
+  };
+
+  const handlePaymentTarjeta = () => {
+    setPaymentOption("tarjeta");
+  };
+
+  const handlePaymentEfectivo = () => {
+    setPaymentOption("efectivo");
+  };
 
   return (
     <>
@@ -98,8 +120,36 @@ const Cart = () => {
         ))}
       </div>
       <div className="totalContainer">
+        <p>Seleccioná un método de pago:</p>
+        <section>
+          <input
+            type="radio"
+            id="tarjeta"
+            name="payment"
+            value="tarjeta"
+            onClick={handlePaymentTarjeta}
+          />
+          <label for="tarjeta">Crédito/Débito</label>
+        </section>
+        <section>
+          <input
+            type="radio"
+            id="efectivo"
+            name="payment"
+            value="efectivo"
+            onClick={handlePaymentEfectivo}
+          />
+          <label for="efectivo">Efectivo</label>
+        </section>
+      </div>
+      <div className="totalContainer">
+        <p className="alertDisabled" id="alert">
+          Debes seleccionar un método de pago para continuar
+        </p>
         <p className="totalCart">Total: ${total.toFixed(2)}</p>
-        <button className="checkoutButton" onClick={createOrder}>Realizar Pedido</button>
+        <button className="checkoutButton" onClick={redirectPayment}>
+          Pagar Pedido
+        </button>
         <button onClick={clearCart} className="vaciarCarrito">
           Vaciar Carrito
         </button>

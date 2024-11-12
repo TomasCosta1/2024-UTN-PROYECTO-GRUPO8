@@ -141,6 +141,21 @@
   cursor: pointer;
 }
 
+.radios {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.alertDisabled {
+  display: none;
+}
+
+.alertEnabled {
+  color: red;
+}
+
 @media (max-width: 768px) {
   .cartContainer {
     display: grid;
