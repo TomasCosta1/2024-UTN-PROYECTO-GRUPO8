@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
 
 // Obtener todas las ordenes
 router.get('/', async (req, res) => {
-    const query = 'SELECT * FROM orders';
+    const query = 'SELECT * FROM orders ORDER BY id DESC';
     
     try {
         const [results] = await pool.query(query);
