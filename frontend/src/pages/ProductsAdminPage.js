@@ -6,7 +6,7 @@ import '../styles/AdminPage.css';
 
 const ProductsAdminPage = () => {
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState({ id: '', name: '', desc: '', img: '', price: '', category: '' });
+    const [product, setProduct] = useState({ id: '', name: '', description: '', img: '', price: '', category: '' });
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
@@ -31,13 +31,13 @@ const ProductsAdminPage = () => {
     const handleAddProduct = async () => {
         await axios.post('http://localhost:3000/products', product);
         fetchProducts();
-        setProduct({ id: '', name: '', desc: '', img: '', price: '', category: '' });
+        setProduct({ id: '', name: '', description: '', img: '', price: '', category: '' });
     };
 
     const handleEditProduct = async () => {
         await axios.patch(`http://localhost:3000/products/${product.id}`, product);
         fetchProducts();
-        setProduct({ id: '', name: '', desc: '', img: '', price: '' , category: ''});
+        setProduct({ id: '', name: '', description: '', img: '', price: '' , category: ''});
         setIsEditing(false);
     };
 
@@ -68,7 +68,7 @@ const ProductsAdminPage = () => {
                     type="text"
                     name="desc"
                     placeholder="Descripcion del Producto"
-                    value={product.desc}
+                    value={product.description}
                     onChange={handleInputChange}
                 />
                 <input

@@ -4,7 +4,7 @@ import "../styles/Login.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+const Login = ({ handleUser, handleEmail, handlePass, handleInvitado }) => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -34,6 +34,9 @@ const Login = () => {
             console.log("Respuesta del servidor:", data);
     
             if (data.success) {
+                handleUser(data.name);
+                handleEmail(loginData.email);
+                handlePass(loginData.pass);
                 navigate("/");
             } else {
                 toast.error('Credenciales inválidas.', { theme: "colored" });
@@ -74,7 +77,7 @@ const Login = () => {
                     <button type="submit" className="enter">Iniciar Sesión</button>
                     <div className="extra">
                         <p>¿No tiene cuenta?<Link to="/register" className="register-link"> Registrarse</Link></p>
-                        <Link to="/" className="continue">Continuar como invitado</Link>
+                        <Link to="/" className="continue" onClick={handleInvitado}>Continuar como invitado</Link>
                     </div>
                 </form>
             </div>

@@ -65,25 +65,25 @@
 }
 
 /* Botón de inicio de sesión */
-form button {
+.enter {
     width: 100%;
     padding: 1rem;
     border-radius: 6px;
     border: none;
-    background-color: #fff;
+    background-color: #4CAF50;
     color: white;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-form button:hover {
-    background-color: #fff;
+.enter:hover {
+    background-color: #45a049;
 }
 
-form button:active {
-    background-color: #fff;
+.enter:active {
+    background-color: #3e8e41;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 

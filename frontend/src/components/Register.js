@@ -1,4 +1,6 @@
+import "../styles/Register.css"
 import React, { useState } from 'react';
+import axios from "axios";
 
 const Register = () => {
     const [form, setForm] = useState({
@@ -18,20 +20,26 @@ const Register = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (form.password !== confirmPassword) {
             alert("Las contraseñas no coinciden");
             return;
         }
+        console.log(form);
+        
+        const result = await axios.post("http://localhost:3000/register", form);
+        const data = result.data;
+        console.log(data);
+        
 
         console.log("Formulario de registro enviado:", form);
     };
 
     return (
         <div className="background">
-            <div className="register-container">
+            <div className="registerContainer">
                 <h2>Registrarse</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
