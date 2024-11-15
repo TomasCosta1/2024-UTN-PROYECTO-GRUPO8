@@ -6,10 +6,16 @@ import MainAdminPanel from './MainAdminPanel';
 import ProductAdminPanel from './ProductsAdminPanel';
 import '../styles/AdminPage.css';
 import { UserContext } from "../context/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 const HomeAdminPage = () => {
-    const { verify } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const { verify, clearUser, admin } = useContext(UserContext);
     verify();
+    useEffect(() => {
+        if(admin === false){navigate('/login')}
+    },[])
     const [selected, setSelected] = useState('Principal');
     const handleSelection = (item) => {
         setSelected(item);
@@ -24,7 +30,9 @@ const HomeAdminPage = () => {
             case 'Perfil':
                 return;
             case 'Salir':
-                return null;
+                clearUser();
+                navigate("/login");
+                return;
             default:
                 return <MainAdminPanel />;
         }

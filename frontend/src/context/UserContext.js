@@ -8,6 +8,7 @@ export const UserProvider=({children}) => {
     const [pass, setPass] = useState("");
     const [email, setEmail] = useState("");
     const [invitado, setInvitado] = useState(false);
+    const [admin, setAdmin] = useState(false);
     const navigate = useNavigate();
 
     const handleUser = (prop) => {
@@ -26,6 +27,10 @@ export const UserProvider=({children}) => {
         setInvitado(true);
     }
 
+    const handleAdmin = () => {
+        setAdmin(true);
+    }
+
     const verify = async () => {
         if(!invitado) {
             const loginData = {
@@ -39,7 +44,7 @@ export const UserProvider=({children}) => {
                 });
         
                 const data = await response.json();
-        
+
                 if (data.success) {
                 } else {
                     navigate("/login")
@@ -50,18 +55,27 @@ export const UserProvider=({children}) => {
         }
     }
 
+    const clearUser = () => {
+        setEmail("");
+        setPass("");
+        setUser("");
+    }
+
     return (
         <UserContext.Provider
-          value={{
+        value={{
             user,
             pass,
             email,
             invitado,
+            admin,
             handleUser,
             handlePass,
             handleEmail,
             handleInvitado,
-            verify
+            handleAdmin,
+            verify,
+            clearUser
           }}
         >
             {children}

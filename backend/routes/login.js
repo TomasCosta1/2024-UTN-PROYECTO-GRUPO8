@@ -26,7 +26,7 @@ router.get("/:email/:pass", async (req, res) => {
                 // Si coinciden, login exitoso
 
 
-                return res.status(200).json({ success: true, message: "Inicio de sesión exitoso", name:user[0].name });
+                return res.status(200).json({ success: true, message: "Inicio de sesión exitoso", name:user[0].name, admin:user[0].admin });
             } else {
                 // Si no coinciden, devuelve error
                 return res.status(401).json({ success: false, message: "Credenciales inválidas" });

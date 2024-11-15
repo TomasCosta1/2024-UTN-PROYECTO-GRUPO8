@@ -141,6 +141,10 @@ const Cart = () => {
           />
           <label for="efectivo">Efectivo</label>
         </section>
+        <section className="tableNumber">
+          <label for="tableNumber">Número de mesa</label>
+          <input type="number" id="tableNumber" name="tableNumber"></input>
+        </section>
       </div>
       <div className="totalContainer">
         <p className="alertDisabled" id="alert">

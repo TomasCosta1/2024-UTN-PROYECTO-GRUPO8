@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
 import '../styles/AdminPage.css';
 <script src="https://kit.fontawesome.com/50303851c6.js" crossorigin="anonymous"></script>
 
@@ -60,7 +61,11 @@ const MainAdminPanel = () => {
     };
 
     const handleDeleteTable = async (id) => {
-        await axios.delete(`http://localhost:3000/tables/${id}`);
+        try{
+            await axios.delete(`http://localhost:3000/tables/${id}`);
+        }catch{
+            toast.error("Esta mesa tiene ordenes asociadas", {theme: "colored"});
+        }
         fetchTables();
     };
 
@@ -147,6 +152,7 @@ const MainAdminPanel = () => {
                     </ul>
                 </section>
             </div>
+            <ToastContainer />
         </div>
     );
 };
