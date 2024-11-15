@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import '../styles/AdminPage.css';
 
-const ProductsAdminPage = () => {
+const ProductsAdminPanel = () => {
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({ id: '', name: '', description: '', img: '', price: '', category: '' });
     const [isEditing, setIsEditing] = useState(false);
@@ -53,7 +51,6 @@ const ProductsAdminPage = () => {
 
     return (
         <>
-        <Header/>
         <div className='adminPage'>
             <h1 className='title'>Administracion de Productos</h1>
             <div className='search'>
@@ -112,9 +109,8 @@ const ProductsAdminPage = () => {
                 ))}
             </ul>
         </div>
-        <Footer/>
         </>
     );
 };
 
-export default ProductsAdminPage;
+export default ProductsAdminPanel;

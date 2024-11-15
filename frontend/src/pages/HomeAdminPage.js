@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AdminPage.css';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer';  
 
 const HomeAdminPage = () => {
     const [orders, setOrders] = useState([]);
