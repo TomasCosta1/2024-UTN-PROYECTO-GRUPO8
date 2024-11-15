@@ -24,7 +24,6 @@ const HomeAdminPage = () => {
             case 'Perfil':
                 return;
             case 'Salir':
-                // Puedes manejar la lógica de salir aquí
                 return null;
             default:
                 return <MainAdminPanel />;
