@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 .adminPage .search{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
-    padding-left: 20px;
     flex-wrap: wrap;
+    max-width: 500px;
+    background-color: #f4f4f4;
+    height: 100%;
+    padding: 10px;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
 }
 
 .adminPage .title{
@@ -25,10 +32,17 @@
     list-style: none;
 }
 
-.adminPage .search input{
+.adminPage .search input, .adminPage .search select, .adminPage .search button{
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin: 10px;
+    min-width: 300px;
+    font-size: 1.2rem;
+}
+
+.adminPage .search img{
+    width: 250px;
 }
 
 .adminPage .product{
@@ -94,6 +108,7 @@
     display: flex;
     flex-direction: column;
     width: 500px;
+    margin: 0;
 }
 
 .adminPage .btnAdd{
@@ -209,4 +224,24 @@
 .adminPanel .content {
     flex-grow: 1;
     padding: 20px;
+}
+
+.productsPanel{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.productsPanel .filter{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.productsPanel .filter select, .productsPanel .filter button, .productsPanel .filter input{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

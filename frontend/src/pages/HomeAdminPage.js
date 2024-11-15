@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MainAdminPanel from './MainAdminPanel';
 import ProductAdminPanel from './ProductsAdminPanel';
 import '../styles/AdminPage.css';
+import { UserContext } from "../context/UserContext";
 
 const HomeAdminPage = () => {
+    const { verify } = useContext(UserContext);
+    verify();
     const [selected, setSelected] = useState('Principal');
     const handleSelection = (item) => {
         setSelected(item);

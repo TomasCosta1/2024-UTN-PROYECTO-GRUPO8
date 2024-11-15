@@ -2,22 +2,6 @@ const express = require('express');
 const pool = require('../config/database');
 const router = express.Router();
 
-// Crear un nuevo cliente
-router.post('/', async (req, res) => {
-    const { name, email, pass } = req.body;
-    
-    const query = 'INSERT INTO clients (name, email, pass) VALUES (?, ?, ?)';
-    
-    try {
-        const [result] = await pool.query(query, [name, email, pass]);
-        const newClient = { id: result.insertId, name, email, pass };
-        res.status(201).json(newClient);
-    } catch (error) {
-        console.error('Error al crear el cliente:', error);
-        res.status(500).json({ message: 'Error al crear el cliente', error: error.message });
-    }
-});
-
 // Obtener todos los clientes (sin pass)
 router.get('/', async (req, res) => {
     const query = 'SELECT id, name, email, points FROM clients;';
