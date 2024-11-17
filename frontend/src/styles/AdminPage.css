@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 .adminPage .search{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
-    padding-left: 20px;
     flex-wrap: wrap;
+    max-width: 500px;
+    background-color: #f4f4f4;
+    height: 100%;
+    padding: 10px;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
 }
 
 .adminPage .title{
@@ -12,13 +19,30 @@
     font-size: 60px;
     font-family: 'Great Vibes', Arial, sans-serif;
     padding-left: 20px;
-    text-align: start;
+    text-align: center;
 }
 
-.adminPage .search input{
+.adminPage .panelContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.adminPage .panelContainer ul{
+    list-style: none;
+}
+
+.adminPage .search input, .adminPage .search select, .adminPage .search button{
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin: 10px;
+    min-width: 300px;
+    font-size: 1.2rem;
+}
+
+.adminPage .search img{
+    width: 250px;
 }
 
 .adminPage .product{
@@ -31,12 +55,14 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 1px solid #ccc;
+    min-width: 300px;
 }
 
 .adminPage .mainInfo{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .adminPage .orderDetail{
@@ -82,6 +108,7 @@
     display: flex;
     flex-direction: column;
     width: 500px;
+    margin: 0;
 }
 
 .adminPage .btnAdd{
@@ -91,6 +118,12 @@
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 5px rgb(102, 102, 102);
+}
+
+.adminPage .btnAdd:hover{
+    background-color: rgb(60, 182, 60);
 }
 
 .adminPage .btnEdit{
@@ -123,4 +156,92 @@
 
 .adminPage .btnDefault:hover{
     background-color: rgb(60, 60, 182);
+}
+
+.adminPage #btnAddTable{
+    text-align: center;
+    font-weight: bold;
+}
+
+.adminPage .status-available {
+    color: green;
+    font-weight: bold;
+}
+
+.adminPage .status-occupied {
+    color: red;
+    font-weight: bold;
+}
+
+.adminPage .status-reserved {
+    color: orange;
+    font-weight: bold;
+}
+
+.adminPanel{
+    display: flex;
+}
+
+.adminPanel .sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #4e6e8d;
+    min-height: 80vh;
+}
+
+.adminPanel .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adminPanel .sidebar li {
+    margin: 0 0 10px 0;
+    color: white;
+}
+
+.adminPanel .sidebar li:hover {
+    color: #f39c12;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.adminPanel .sidebar .selected{
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.adminPanel hr{
+    margin: 0;
+    border: 1px solid #ccc;
+}
+
+.adminPanel .content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.productsPanel{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.productsPanel .filter{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.productsPanel .filter select, .productsPanel .filter button, .productsPanel .filter input{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

@@ -219,3 +219,33 @@
     font-size: 20px; /* Reduce el tamaño del icono */
   }
 }
+
+.tableNumber{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.tableNumber input{
+  width: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+  -moz-appearance: textfield;
+}
+
+.tableNumber input::-webkit-outer-spin-button,
+.tableNumber input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
+
+  .tableNumber input:focus {
+    border-color: #1c5985;
+    outline: none;
+  }

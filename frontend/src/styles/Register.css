@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0px;
+}
 
 .background {
     background-image: url(../components/Assets/uma-mesa-com-uma-colher-e-uma-colher-sobre-ela_9493-80857.avif);
@@ -8,10 +10,15 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.login-container {
-    background: transparent;
+/* Contenedor del formulario */
+
+.registerContainer {
+    background: transparent; 
     padding: 3rem 2rem;
     border-radius: 12px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
@@ -19,30 +26,42 @@
     width: 90%;
     text-align: center;
     backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.login-container .title {
-    margin-bottom: 1.5rem;
+.registerContainer .title {
+    margin-bottom: 2rem;
     color: #fff;
     font-size: 3rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 /* Estilo de los grupos de entrada */
 .input-group {
     position: relative;
-    margin-bottom: 1.5rem;
+    color: #fff;
+    box-sizing: border-box;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
 }
 
 .input-group input {
     width: 100%;
     padding: 1rem;
-    border: 1px solid #ddd;
     border-radius: 6px;
-    background: #f7f7f7;
+    background: transparent;
     font-size: 1rem;
     transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, .2);
     color: #fff;
+    box-sizing: border-box;
+    margin: 0;
 }
+
 
 .input-group input:focus {
     border-color: #4CAF50;
@@ -59,13 +78,14 @@
 
 /* Estilo del texto del placeholder */
 .input-group input::placeholder {
-    color: #fff;
-    font-style: italic;
-    opacity: 1;
+    color: #bbb;
+    font-style: italic; /* Hace que el texto sea cursivo */
+    opacity: 1; /* Asegura que la opacidad esté al 100% */
 }
 
-/* Botón de inicio de sesión */
-.enter {
+
+/* Botón de registro */
+.register-btn {
     width: 100%;
     padding: 1rem;
     border-radius: 6px;
@@ -74,40 +94,22 @@
     color: white;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.enter:hover {
+.register-btn:hover {
     background-color: #45a049;
 }
 
-.enter:active {
+.register-btn:active {
     background-color: #3e8e41;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.continue{
-    color: #fff;
-    text-decoration: none;
-    margin: 0;
-    padding-top: 0;
-    box-sizing: border-box;
-}
-.continue:hover{
-    text-decoration: underline;
-}
-
-.extra{ 
-    text-align: center;
-    font-size: 14.5px;
-    margin: 20px 0 1px;
-    padding: 0;
-    box-sizing: border-box;
-    color: #fff;
-}
-
-.extra p, .register-link{
+.extra p, .login-link{
     color: #fff;
     text-decoration: none;
     font-weight: 600;
@@ -115,6 +117,6 @@
     box-sizing: border-box;
     margin-bottom: 20px;
 }
-.extra p .register-link:hover{
+.extra p .login-link:hover{
     text-decoration: underline;
 }

@@ -7,6 +7,9 @@ const ordersRoutes = require('./routes/orders');
 const orderDetailsRoutes = require('./routes/orderDetails');
 const paymentRoutes = require('./routes/payment');
 const endDayRoutes = require('./routes/endDay');
+const clientRoutes = require('./routes/clients');
+const tablesRoutes = require('./routes/tables');
+const registerRoutes = require('./routes/register');
 
 const app = express();
 const port = 3000;
@@ -15,11 +18,14 @@ app.use(bodyParser.json())
 app.use(cors());
 app.use(express.json());
 app.use('/products', productRoutes);
-app.use('/login', loginRoutes)
+app.use('/login', loginRoutes);
 app.use('/orders', ordersRoutes);
 app.use('/orderDetails', orderDetailsRoutes);
 app.use('/payment', paymentRoutes);
 app.use('/endDay', endDayRoutes);
+app.use('/clients', clientRoutes);
+app.use('/tables', tablesRoutes);
+app.use('/register', registerRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is running');

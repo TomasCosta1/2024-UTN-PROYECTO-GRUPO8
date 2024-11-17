@@ -3,8 +3,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { CartContext } from "../context/CartContext";
 import "../styles/Success.css";
+import { UserContext } from "../context/UserContext";
 
 const ClientOrderPage = () => {
+  
+  const { verify } = useContext(UserContext);
+  verify();
+
   const { orderNumber, orderState } = useContext(CartContext);
   if (orderState === "approved") {
     return (
