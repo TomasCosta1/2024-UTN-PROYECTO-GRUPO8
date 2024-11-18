@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MainAdminPanel from '../components/MainAdminPanel';
 import ProductAdminPanel from '../components/ProductsAdminPanel';
+import ProfilePanel from '../components/ProfilePanel';
 import '../styles/AdminPage.css';
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,7 @@ const HomeAdminPage = () => {
             case 'Administrar Productos':
                 return <ProductAdminPanel />;
             case 'Perfil':
-                return;
+                return <ProfilePanel />;
             case 'Salir':
                 clearUser();
                 navigate("/login");

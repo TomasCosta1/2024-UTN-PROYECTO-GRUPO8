@@ -121,7 +121,6 @@ const MainAdminPanel = () => {
 
         fetchOrders();
     }
-
     return (
         <div className='adminPage'>
             <div className='panelContainer'>
@@ -131,7 +130,7 @@ const MainAdminPanel = () => {
                         {orders.filter(order => order.status === 'Pendiente').map((order) => (
                             <li key={order.id} className='product'>
                                 <div className='mainInfo'>
-                                    Orden {order.id} - {order.status} - ${order.totalPrice}
+                                    Orden {order.id} - Mesa {order.status} - ${order.totalPrice}
                                     <div>
                                         {order.status !== 'Pagada' && (
                                             <button onClick={() => changeOrderStatus(order.id)} className='btnAdd'><i class="fa-solid fa-check"></i></button>
