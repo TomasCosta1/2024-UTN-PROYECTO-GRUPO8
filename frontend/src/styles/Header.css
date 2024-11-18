@@ -7,6 +7,7 @@ header {
     text-align: center;
     font-family: 'Great Vibes', Arial, sans-serif;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 header h1 {
@@ -29,6 +30,8 @@ header nav ul {
 
 header nav li {
     margin: 0 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 header nav a {
@@ -38,8 +41,30 @@ header nav a {
     transition: color 0.3s ease;
 }
 
-header nav a:hover {
+header nav li:hover, header nav a:hover {
     color: #f39c12;
+}
+
+header i{
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+header i:hover {
+    color: red;
+}
+
+header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 @media (max-width: 768px) {

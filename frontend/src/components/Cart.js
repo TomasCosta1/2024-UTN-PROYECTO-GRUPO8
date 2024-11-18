@@ -15,6 +15,8 @@ const Cart = ({ email }) => {
     clearCart,
     handleOrderNumber, 
     handleOrderState,
+    tableNumber,
+    handleTableNumber,
   } = useContext(CartContext);
 
   const [paymentOption, setPaymentOption] = useState("");
@@ -25,7 +27,7 @@ const Cart = ({ email }) => {
     const clientId = data.id;
     const order = {
       id_client: clientId,
-      id_table: 1,
+      id_table: tableNumber,
       totalPrice: total,
     };
     const response = await axios.post("http://localhost:3000/orders", order);
@@ -75,6 +77,11 @@ const Cart = ({ email }) => {
   const handlePaymentEfectivo = () => {
     setPaymentOption("efectivo");
   };
+
+  const handleChangeTableNumber  = (e) => {
+    const tableNumber = e.target.value;
+    handleTableNumber(tableNumber);
+  }
 
   return (
     <>
@@ -146,7 +153,7 @@ const Cart = ({ email }) => {
         </section>
         <section className="tableNumber">
           <label for="tableNumber">Número de mesa</label>
-          <input type="number" id="tableNumber" name="tableNumber"></input>
+          <input type="number" id="tableNumber" name="tableNumber" onChange={handleChangeTableNumber}></input>
         </section>
       </div>
       <div className="totalContainer">

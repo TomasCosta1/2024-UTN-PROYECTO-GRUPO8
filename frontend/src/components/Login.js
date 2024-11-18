@@ -39,7 +39,6 @@ const Login = ({ handleUser, handleEmail, handlePass, handleInvitado, handleAdmi
                 handlePass(loginData.pass);
                 if(data.admin === 1){
                     handleAdmin()
-                    alert("NASHEEE")
                     navigate("/admin");
                 }else{
                     navigate("/");
