@@ -23,6 +23,15 @@
 .productDetail .price {
     font-size: 25px;
     font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.productDetail h2 {
+    margin: 0.5rem 0;
+}
+
+.productDetail .description {
+    margin: 1.5rem 0;
 }
 
 .productDetail .btns {

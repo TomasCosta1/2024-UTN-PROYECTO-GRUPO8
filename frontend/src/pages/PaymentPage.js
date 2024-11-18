@@ -10,8 +10,7 @@ const PaymentPage = () => {
   const { verify, email } = useContext(UserContext);
   verify();
 
-
-  const {
+  const { // Obtiene los datos del contexto del carrito
     total,
     cart,
     clearCart,
@@ -20,6 +19,7 @@ const PaymentPage = () => {
     handleOrderNumber,
     handleOrderState,
   } = useContext(CartContext);
+  
   return (
     <>
       <Header />

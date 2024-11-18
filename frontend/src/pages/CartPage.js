@@ -7,6 +7,7 @@ import { UserContext } from "../context/UserContext";
 const CartPage = () => {
     const { verify, email } = useContext(UserContext);
     verify();
+    
     return(
         <div>
             <Header />

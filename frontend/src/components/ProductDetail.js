@@ -29,10 +29,10 @@ const ProductDetail = ({ productId }) => {
         return <div>Cargando producto...</div>;
     }
 
-    const onAdd = (quantity) => {
+    const onAdd = (quantity) => { // Función para manejar la adición de productos al carrito
         const notify = () => toast.success(`Agregaste ${quantity} ${producto.name} al carrito`, {theme  : "colored"});
         addProduct(producto, quantity);
-        notify();
+        notify(); // Muestra la notificación con toastify
     }
 
     return (
@@ -43,7 +43,7 @@ const ProductDetail = ({ productId }) => {
                 </section>
                 {producto.img && <img src={producto.img} alt={producto.name} className="img" />}
                 <h2 className="h2">{producto.name}</h2>
-                <p>{producto.description}</p>
+                <p className='description'>{producto.description}</p>
                 <p className='price'> ${producto.price} </p>
                 <ItemCount onAdd={onAdd}/>
                 <ToastContainer />

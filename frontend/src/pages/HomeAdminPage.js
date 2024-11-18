@@ -8,12 +8,12 @@ import '../styles/AdminPage.css';
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from 'react-router-dom';
 
-const HomeAdminPage = () => {
+const HomeAdminPage = () => { 
     const navigate = useNavigate();
 
-    const { verify, clearUser, admin } = useContext(UserContext);
+    const { verify, clearUser, admin } = useContext(UserContext); 
     verify();
-    useEffect(() => {
+    useEffect(() => { // Verifica si el usuario es un administrador para permitir el acceso a la página admin
         if(admin === false){navigate('/login')}
     },[])
     const [selected, setSelected] = useState('Principal');
@@ -21,7 +21,7 @@ const HomeAdminPage = () => {
         setSelected(item);
     };
 
-    const renderContent = () => {
+    const renderContent = () => { // Función para renderizar el contenido de la página admin
         switch (selected) {
             case 'Principal':
                 return <MainAdminPanel />;

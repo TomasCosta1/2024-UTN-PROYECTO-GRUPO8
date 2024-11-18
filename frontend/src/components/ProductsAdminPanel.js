@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AdminPage.css';
 
-const ProductsAdminPanel = () => {
+const ProductsAdminPanel = () => { // Estados para almacenar los productos, producto seleccionado y si se está editando
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({ id: '', name: '', description: '', img: '', price: '', category: '' });
     const [isEditing, setIsEditing] = useState(false);
@@ -12,39 +12,39 @@ const ProductsAdminPanel = () => {
     }, []);
 
     const fetchProducts = async () => {
-        const response = await axios.get('http://localhost:3000/products');
+        const response = await axios.get('http://localhost:3000/products'); // Realiza una solicitud GET para obtener los productos
         setProducts(response.data);
     };
 
     const fetchProductById = async (id) => {
-        const response = await axios.get(`http://localhost:3000/products/${id}`);
+        const response = await axios.get(`http://localhost:3000/products/${id}`); // Realiza una solicitud GET para obtener un producto por su ID
         setProduct(response.data);
     };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setProduct({ ...product, [name]: value });
+        setProduct({ ...product, [name]: value }); // Actualiza el estado del producto con los valores del formulario
     };
 
     const handleAddProduct = async () => {
-        await axios.post('http://localhost:3000/products', product);
+        await axios.post('http://localhost:3000/products', product); // Realiza una solicitud POST para agregar un nuevo producto
         fetchProducts();
-        setProduct({ id: '', name: '', description: '', img: '', price: '', category: '' });
+        setProduct({ id: '', name: '', description: '', img: '', price: '', category: '' }); // Resetea el estado del producto
     };
 
     const handleEditProduct = async () => {
-        await axios.patch(`http://localhost:3000/products/${product.id}`, product);
+        await axios.patch(`http://localhost:3000/products/${product.id}`, product); // Realiza una solicitud PATCH para editar un producto existente
         fetchProducts();
-        setProduct({ id: '', name: '', description: '', img: '', price: '' , category: ''});
+        setProduct({ id: '', name: '', description: '', img: '', price: '' , category: ''});  // Resetea el estado del producto
         setIsEditing(false);
     };
 
-    const handleDeleteProduct = async (id) => {
+    const handleDeleteProduct = async (id) => { // Realiza una solicitud DELETE para eliminar un producto
         await axios.delete(`http://localhost:3000/products/${id}`);
         fetchProducts();
     };
 
-    const handleEditClick = (product) => {
+    const handleEditClick = (product) => { // Función para manejar la edición de un producto
         setProduct(product);
         setIsEditing(true);
     };
@@ -60,7 +60,7 @@ const ProductsAdminPanel = () => {
         setSearchCategory(e.target.value);
     };
 
-    const filteredProducts = products.filter((product) => {
+    const filteredProducts = products.filter((product) => { // Filtra los productos por nombre y categoría
         return (
             (product.name.toLowerCase().includes(searchTerm.toLowerCase()) || searchTerm === '') &&
             (product.category === searchCategory || searchCategory === '')

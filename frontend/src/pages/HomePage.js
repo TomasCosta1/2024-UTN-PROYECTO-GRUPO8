@@ -6,9 +6,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { UserContext } from '../context/UserContext';
 
-const Home = () => {
+const HomePage = () => {
     const { verify } = useContext(UserContext);
     verify();
+    
     return (
         <>
         <Header/>
@@ -20,4 +21,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomePage;

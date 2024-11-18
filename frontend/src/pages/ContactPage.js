@@ -8,6 +8,7 @@ import { useContext } from "react";
 const ConctactPage = () => {
     const { verify } = useContext(UserContext);
     verify();
+    
     return (
         <>
         <Header/>

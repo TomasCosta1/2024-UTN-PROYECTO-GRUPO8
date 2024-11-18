@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({ children }) => { // Define el proveedor del contexto del carrito de compras
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState(0);
   const [total, setTotal] = useState(0);
@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
   const [orderState, setOrderState] = useState('');
   const [tableNumber, setTableNumber] = useState(0);
 
-  useEffect(() => {
+  useEffect(() => { // Efecto para actualizar la cantidad de productos en el carrito
     let firstQty = 0;
     cart.forEach((product) => {
       firstQty += product.qty;
@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
     setQty(firstQty);
   }, [cart]);
 
-  useEffect(() => {
+  useEffect(() => { // Efecto para actualizar el total de la compra
     let firstTotal = 0;
     cart.forEach((product) => {
       firstTotal += product.qty * product.price;
@@ -28,23 +28,23 @@ export const CartProvider = ({ children }) => {
   }, [cart, qty]);
   
 
-  const add1Product = (product) => {
+  const add1Product = (product) => { // Función para agregar un producto al carrito
     product.qty = product.qty + 1;
     setQty(qty + 1);
   };
 
-  const sub1Product = (product) => {
+  const sub1Product = (product) => { // Función para disminuir un producto del carrito
     if (product.qty > 1) {
       product.qty = product.qty - 1;
       setQty(qty - 1);
     }
   };
 
-  const isInCart = (id) => {
+  const isInCart = (id) => { // Función para verificar si un producto ya está en el carrito
     return cart.some((product) => product.id === id);
   };
 
-  const addProduct = (product, quantity) => {
+  const addProduct = (product, quantity) => { // Función para agregar un producto al carrito con una cantidad específica
     if (isInCart(product.id)) {
       const auxCart = cart.map(auxProduct => {
         if (auxProduct.id === product.id) {
@@ -59,15 +59,16 @@ export const CartProvider = ({ children }) => {
   };
   
 
-  const removeProduct = (id) => {
+  const removeProduct = (id) => { // Función para eliminar un producto del carrito
     setCart(cart.filter((product) => product.id !== id));
   };
 
-  const clearCart = () => {
+  const clearCart = () => { // Función para vaciar el carrito
     setCart([]);
     setQty(0);
   };
 
+  // Funciones para manejar el estado de pago, número de orden y número de mesa
   const handlePaymentState = () => {
     setPago(true);
   }
@@ -82,9 +83,10 @@ export const CartProvider = ({ children }) => {
   const handleTableNumber = (table) => {
     setTableNumber(table);
   }
-  return (
+
+  return ( // Retorna el proveedor del contexto del carrito de compras con sus valores y funciones muy importantes
     <CartContext.Provider
-      value={{
+      value={{ 
         cart,
         qty,
         total,

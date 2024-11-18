@@ -4,7 +4,7 @@ import "../styles/Login.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = ({ handleUser, handleEmail, handlePass, handleInvitado, handleAdmin}) => {
+const Login = ({ handleUser, handleEmail, handlePass, handleInvitado, handleAdmin}) => { // Componente Login que recibe varias funciones como props
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -12,12 +12,12 @@ const Login = ({ handleUser, handleEmail, handlePass, handleInvitado, handleAdmi
         password: ""
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e) => { // Función para manejar los cambios en los campos del formulario
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
     };
 
-    const checkData = async (e) => {
+    const checkData = async (e) => { // Función para manejar el envío del formulario
         e.preventDefault();
     
         const loginData = {
@@ -28,7 +28,7 @@ const Login = ({ handleUser, handleEmail, handlePass, handleInvitado, handleAdmi
         try {
             const response = await fetch(`http://localhost:3000/login/${loginData.email}/${loginData.pass}`, {
                 method: 'GET'
-            });
+            }); // Realiza una solicitud GET al servidor con el email y la contraseña del usuario
     
             const data = await response.json();
             console.log("Respuesta del servidor:", data);
@@ -37,11 +37,11 @@ const Login = ({ handleUser, handleEmail, handlePass, handleInvitado, handleAdmi
                 handleUser(data.name);
                 handleEmail(loginData.email);
                 handlePass(loginData.pass);
-                if(data.admin === 1){
+                if(data.admin === 1){ // Verifica si el usuario es administrador
                     handleAdmin()
                     navigate("/admin");
                 }else{
-                    navigate("/");
+                    navigate("/"); // Redirige al usuario a la página principal si no es administrador
                 }
             } else {
                 toast.error('Credenciales inválidas.', { theme: "colored" });

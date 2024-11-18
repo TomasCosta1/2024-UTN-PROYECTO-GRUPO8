@@ -4,17 +4,17 @@ const Contact = () => {
 return (
     <div className="contact">
     <body>
-        <div class="header">
+        <div className="header">
         <h1>Contacto</h1>
         </div>
-        <section class="contact-section">
-        <div class="content">
+        <section className="contact-section">
+        <div className="content">
             <h2>Queremos Escucharte</h2>
             <p> Si tenés alguna pregunta, sugerencia, incoveniente con la aplicación o querés trabajar con nosotros, no dudes en ponerte en contacto. <br /><br /> Tu mensaje no molesta.</p>
         </div>
-        <div class="content">
+        <div className="content">
             <h2>Detalles de Contacto</h2>
-            <div class="contentDetalles">
+            <div className="contentDetalles">
             <p><b>Dirección:</b> Av. 60 1554 </p>
             <p><b>Ciudad:</b> Berisso, Provincia de Buenos Aires</p>
             <p><b>Teléfono:</b> (221) 123-4567</p>
@@ -24,7 +24,7 @@ return (
             </div>
         </div>
         </section>
-        <h2 class="final">
+        <h2 className="final">
         ¡Esperamos tu mensaje y estamos felices de poder ayudarte en lo que
         necesites!
         </h2>

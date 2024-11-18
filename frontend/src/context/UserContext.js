@@ -3,7 +3,7 @@ import {Link, useNavigate } from "react-router-dom";
 
 export const UserContext=createContext()
 
-export const UserProvider=({children}) => {
+export const UserProvider=({children}) => { // Define el proveedor del contexto del usuario
     const [user, setUser] = useState("");
     const [userId, setUserId] = useState("");
     const [pass, setPass] = useState("");
@@ -12,6 +12,7 @@ export const UserProvider=({children}) => {
     const [admin, setAdmin] = useState(false);
     const navigate = useNavigate();
 
+    // Funciones para manejar los cambios en el estado del usuario
     const handleUser = (prop) => {
         setUser(prop);
     }
@@ -37,16 +38,16 @@ export const UserProvider=({children}) => {
     }
 
     const verify = async () => {
-        if(!invitado) {
+        if(!invitado) { // Verifica si el usuario no es un invitado
             const loginData = {
                 email: email,
                 pass: pass
             };
         
-            try {
+            try { // Realiza una solicitud GET al servidor con el email y la contraseña del usuario y verifica si el usuario es válido
                 const response = await fetch(`http://localhost:3000/login/${loginData.email}/${loginData.pass}`, {
                     method: 'GET'
-                });
+                }); 
         
                 const data = await response.json();
 
@@ -61,7 +62,7 @@ export const UserProvider=({children}) => {
         }
     }
 
-    const clearUser = () => {
+    const clearUser = () => { // Función para limpiar el estado del usuario
         setEmail("");
         setPass("");
         setUser("");
@@ -69,7 +70,7 @@ export const UserProvider=({children}) => {
         setInvitado(false);
     }
 
-    return (
+    return ( // Retorna el proveedor del contexto del usuario con sus valores y funciones muy importantes
         <UserContext.Provider
         value={{
             user,

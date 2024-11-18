@@ -4,27 +4,23 @@ import '../styles/ProductList.css';
 import CartWidget from "./CartWidget";
 import { CartContext } from "../context/CartContext";
 
-const ProductList = () => {
-  //Traigo los productos de la DB
+const ProductList = () => { // Estado para almacenar los productos
   const [products, setProducts] = useState([]);
   const { total } = useContext(CartContext);
 
-  useEffect(() => {
+  useEffect(() => { // Función para obtener los productos de la base de datos
     const getProducts = async () => {
       const response = await fetch("http://localhost:3000/products");
       const data = await response.json();
-      setProducts(data);
+      setProducts(data); // Actualiza el estado con los productos obtenidos
     };
 
     getProducts();
-  }, []);
+  }, []); 
 
-  // console.log(products);
-  // Filtro los productos por las categorias principales para poder mostrarlos en la lista de manera ordenada
+  // Filtra los productos por las categorías principales para mostrarlos de manera ordenada
   const starters = products.filter((product) => product.category === "Entrada");
-  const mainCourses = products.filter(
-    (product) => product.category === "PlatoPrincipal"
-  );
+  const mainCourses = products.filter((product) => product.category === "PlatoPrincipal");
   const desserts = products.filter((product) => product.category === "Postre");
   const drinks = products.filter((product) => product.category === "Bebida");
 

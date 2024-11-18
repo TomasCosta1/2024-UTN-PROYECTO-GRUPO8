@@ -5,13 +5,14 @@ import { CartContext } from "../context/CartContext";
 import "../styles/Success.css";
 import { UserContext } from "../context/UserContext";
 
-const ClientOrderPage = () => {
+const ClientOrderPage = () => { // Página para mostrar el estado de la orden del cliente que variará según el estado de la orden en el momento de la compra
   
   const { verify } = useContext(UserContext);
   verify();
 
   const { orderNumber, orderState } = useContext(CartContext);
   if (orderState === "approved") {
+    
     return (
       <>
         <Header />
@@ -23,6 +24,7 @@ const ClientOrderPage = () => {
       </>
     );
   } else if (orderState === "failed") {
+    
     return (
       <>
         <Header />
@@ -37,6 +39,7 @@ const ClientOrderPage = () => {
       </>
     );
   } else if (orderState === "pending") {
+    
     return (
       <>
         <Header />

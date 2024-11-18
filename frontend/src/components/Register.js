@@ -5,44 +5,43 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Register = () => { // Realiza una solicitud GET para obtener los datos del usuario
     const [form, setForm] = useState({
         nombreCompleto: "",
         email: "",
         password: "",
     });
 
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState(""); // Estado para manejar la confirmación de la contraseña
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === "confirmPassword") {
             setConfirmPassword(value);
         } else {
-            setForm({ ...form, [name]: value });
+            setForm({ ...form, [name]: value }); // Actualiza el estado del formulario
         }
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Previene el comportamiento por defecto del formulario
 
-        if (form.password !== confirmPassword) {
+        if (form.password !== confirmPassword) { // Verifica si las contraseñas coinciden
             toast.error("Las contraseñas no coinciden");
             return;
         }
 
         try {
-            const result = await axios.post("http://localhost:3000/register", form);
+            const result = await axios.post("http://localhost:3000/register", form); // Realiza una solicitud POST para registrar al usuario y te advierte si el usuario ya existe o varios errores
             const data = result.data;
 
             if (data.success) {
                 toast.success("Registro exitoso");
             } else if (data.message === "El usuario ya existe.") {
-                toast.error("El usuario ya está registrado",  {theme: "colored"});
+                toast.error("El usuario ya está registrado",  {theme: "colored"}); 
             }
         } catch (error) {
             if (error.response && error.response.status === 409) {
-                // Manejar específicamente el error 409
                 toast.error("El correo electrónico ya está registrado.", {theme: "colored"});
             } else {
                 console.error("Error en el registro:", error);

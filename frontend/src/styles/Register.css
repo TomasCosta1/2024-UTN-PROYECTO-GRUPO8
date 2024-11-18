@@ -3,7 +3,7 @@
 }
 
 .background {
-    background-image: url(../components/Assets/uma-mesa-com-uma-colher-e-uma-colher-sobre-ela_9493-80857.avif);
+    background-image: url(../components/Assets/mesaCocinaLogin.avif);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -14,8 +14,6 @@
     margin: 0;
     padding: 0;
 }
-
-/* Contenedor del formulario */
 
 .registerContainer {
     background: transparent; 
@@ -40,7 +38,7 @@
     padding: 0;
 }
 
-/* Estilo de los grupos de entrada */
+
 .input-group {
     position: relative;
     color: #fff;
@@ -76,15 +74,14 @@
     color: #4CAF50;
 }
 
-/* Estilo del texto del placeholder */
+
 .input-group input::placeholder {
     color: #bbb;
-    font-style: italic; /* Hace que el texto sea cursivo */
-    opacity: 1; /* Asegura que la opacidad esté al 100% */
+    font-style: italic; 
+    opacity: 1; 
 }
 
 
-/* Botón de registro */
 .register-btn {
     width: 100%;
     padding: 1rem;

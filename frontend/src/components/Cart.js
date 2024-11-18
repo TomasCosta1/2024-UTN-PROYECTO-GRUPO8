@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import axios from "axios";
+import axios from "axios"; 
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/Cart.css";
+import "../styles/Cart.css"; 
 
-const Cart = ({ email }) => {
+const Cart = ({ email }) => { // Componente Cart que recibe el email como prop
   const navigate = useNavigate();
   const {
     cart,
@@ -19,9 +19,9 @@ const Cart = ({ email }) => {
     handleTableNumber,
   } = useContext(CartContext);
 
-  const [paymentOption, setPaymentOption] = useState("");
+  const [paymentOption, setPaymentOption] = useState(""); // Estado para la opción de pago seleccionada
 
-  const createOrder = async () => {
+  const createOrder = async () => { // Función para crear una orden
     const responseEmail = await fetch (`http://localhost:3000/clients/client-id/${encodeURIComponent(email)}`);
     const data = await responseEmail.json();
     const clientId = data.id;
@@ -30,7 +30,7 @@ const Cart = ({ email }) => {
       id_table: tableNumber,
       totalPrice: total,
     };
-    const response = await axios.post("http://localhost:3000/orders", order);
+    const response = await axios.post("http://localhost:3000/orders", order); // Solicitud para crear la orden
     const createdOrder = response.data;
     sendInfo(Number(createdOrder.id));
     handleOrderNumber(Number(createdOrder.id));
@@ -38,7 +38,7 @@ const Cart = ({ email }) => {
     navigate("/clientOrder");
   };
 
-  const sendInfo = async (orderId) => {
+  const sendInfo = async (orderId) => { // Función para enviar la información de la orden
     const newProducts = cart.map((product) => ({
       id_product: product.id,
       quantity: product.qty,
@@ -56,7 +56,7 @@ const Cart = ({ email }) => {
     }
   };
 
-  const redirectPayment = () => {
+  const redirectPayment = () => { // Función para redirigir según la opción de pago seleccionada
     if (paymentOption === "efectivo") {
       handleOrderState("pending");
       createOrder();

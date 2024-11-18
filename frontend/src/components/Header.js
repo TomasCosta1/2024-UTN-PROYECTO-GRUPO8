@@ -7,12 +7,11 @@ import ProfilePanel from './ProfilePanel';
 
 const Header = () => {
     const { admin, clearUser, user } = useContext(UserContext);
-
     
     return (
         <header>
             <h1>Gestor de Restaurant</h1>
-            { user && <Link className='profile' to='/profile' ><i class="fa-solid fa-user"></i></Link>}
+            { user && <Link className='profile' to='/profile' ><i className="fa-solid fa-user"></i></Link>}
             <nav>
                 <ul>
                     <li><Link to="/">Inicio</Link></li>
@@ -21,7 +20,7 @@ const Header = () => {
                     {admin && <li><Link to="/admin">Admin Panel</Link></li>}
                 </ul>
             </nav>
-            <button className='logout' onClick={clearUser}><i class="fa-solid fa-right-from-bracket"></i></button>
+            <button className='logout' onClick={clearUser}><i className="fa-solid fa-right-from-bracket"></i></button>
         </header>
     );
 };

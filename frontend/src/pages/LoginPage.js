@@ -5,6 +5,7 @@ import { UserContext } from "../context/UserContext";
 
 const LoginPage = () => {
   const { handleUser, handleEmail, handlePass, handleInvitado, handleAdmin } = useContext(UserContext);
+  
   return (
     <div>
       <Login handleUser={handleUser} handleEmail={handleEmail} handlePass={handlePass} handleInvitado={handleInvitado} handleAdmin={handleAdmin} />

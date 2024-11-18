@@ -11,6 +11,7 @@ const ProfilePage = () => {
     const { verify, user } = useContext(UserContext);
     verify();
     if(!user){Navigate('/login')}
+    
     return (
         <div>
             <Header />

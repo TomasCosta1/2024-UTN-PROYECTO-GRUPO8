@@ -11,7 +11,7 @@ const ProductPage = () => {
   const { verify } = useContext(UserContext);
   verify();
 
-  const { id } = useParams(); // Captura el id desde la URL
+  const { id } = useParams(); // Obtiene el id del producto de la URL
 
   return (
     <>
