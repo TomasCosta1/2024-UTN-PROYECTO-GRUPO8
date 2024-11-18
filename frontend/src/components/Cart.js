@@ -15,6 +15,8 @@ const Cart = () => {
     clearCart,
     handleOrderNumber,
     handleOrderState,
+    tableNumber,
+    handleTableNumber,
   } = useContext(CartContext);
 
   const [paymentOption, setPaymentOption] = useState("");
@@ -22,7 +24,7 @@ const Cart = () => {
   const createOrder = async () => {
     const order = {
       id_client: 1,
-      id_table: 1,
+      id_table: tableNumber,
       totalPrice: total,
     };
     const response = await axios.post("http://localhost:3000/orders", order);
@@ -72,6 +74,11 @@ const Cart = () => {
   const handlePaymentEfectivo = () => {
     setPaymentOption("efectivo");
   };
+
+  const handleChangeTableNumber  = (e) => {
+    const tableNumber = e.target.value;
+    handleTableNumber(tableNumber);
+  }
 
   return (
     <>
@@ -143,7 +150,7 @@ const Cart = () => {
         </section>
         <section className="tableNumber">
           <label for="tableNumber">Número de mesa</label>
-          <input type="number" id="tableNumber" name="tableNumber"></input>
+          <input type="number" id="tableNumber" name="tableNumber" onChange={handleChangeTableNumber}></input>
         </section>
       </div>
       <div className="totalContainer">

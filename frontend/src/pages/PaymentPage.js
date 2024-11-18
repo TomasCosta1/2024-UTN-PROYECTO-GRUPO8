@@ -15,6 +15,7 @@ const PaymentPage = () => {
     total,
     cart,
     clearCart,
+    tableNumber,
     handlePaymentState,
     handleOrderNumber,
     handleOrderState,
@@ -26,6 +27,7 @@ const PaymentPage = () => {
         <Payment
           total={total}
           cart={cart}
+          tableNumber={tableNumber}
           clearCart={clearCart}
           handlePaymentState={handlePaymentState}
           handleOrderNumber={handleOrderNumber}

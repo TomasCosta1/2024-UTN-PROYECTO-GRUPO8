@@ -3,7 +3,7 @@ import axios from 'axios';
 import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
 import { useNavigate } from 'react-router-dom';
 
-const PaymentForm = ({ total, cart, clearCart, handlePaymentState, handleOrderNumber, handleOrderState }) => {
+const PaymentForm = ({ total, tableNumber, cart, clearCart, handlePaymentState, handleOrderNumber, handleOrderState }) => {
   useEffect(() => {
     initMercadoPago('TEST-c4281a92-a00c-4b5d-ba67-f3057580a28a', {
       locale: 'es-AR',
@@ -23,7 +23,7 @@ const PaymentForm = ({ total, cart, clearCart, handlePaymentState, handleOrderNu
   const createOrder = async () => {
     const order = {
       id_client: 1,
-      id_table: 1,
+      id_table: tableNumber,
       totalPrice: total,
     };
     setOrder(order);

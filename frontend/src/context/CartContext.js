@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
   const [pago, setPago] = useState(false);
   const [orderNumber, setOrderNumber] = useState(0);
   const [orderState, setOrderState] = useState('');
+  const [tableNumber, setTableNumber] = useState(0);
 
   useEffect(() => {
     let firstQty = 0;
@@ -78,6 +79,9 @@ export const CartProvider = ({ children }) => {
   const handleOrderState = (state) => {
     setOrderState(state);
   }
+  const handleTableNumber = (table) => {
+    setTableNumber(table);
+  }
   return (
     <CartContext.Provider
       value={{
@@ -87,6 +91,7 @@ export const CartProvider = ({ children }) => {
         pago,
         orderNumber,
         orderState,
+        tableNumber,
         add1Product,
         sub1Product,
         isInCart,
@@ -95,7 +100,8 @@ export const CartProvider = ({ children }) => {
         clearCart,
         handlePaymentState,
         handleOrderNumber,
-        handleOrderState
+        handleOrderState,
+        handleTableNumber,
       }}
     >
         {children}
