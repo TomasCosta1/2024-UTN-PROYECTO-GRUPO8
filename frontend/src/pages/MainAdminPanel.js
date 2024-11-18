@@ -95,17 +95,28 @@ const MainAdminPanel = () => {
         fetchTables();
     }
 
+    const changeOrderStatus = async (id) => {
+        if (!window.confirm("¿Estás seguro de que deseas cambiar el estado de esta orden a 'Pagada'?")) {
+            return;
+        }
+        await axios.patch(`http://localhost:3000/orders/${id}`, { status: 'Pagada' });
+        fetchOrders();
+    }
+
     return (
         <div className='adminPage'>
             <div className='panelContainer'>
                 <section className='ordersPanel'>
                 <h2 className='title'>Ordenes</h2>
                     <ul>
-                        {orders.map((order) => (
+                        {orders.filter(order => order.status === 'Pendiente').map((order) => (
                             <li key={order.id} className='product'>
                                 <div className='mainInfo'>
                                     Orden {order.id} - {order.status} - ${order.totalPrice}
                                     <div>
+                                        {order.status !== 'Pagada' && (
+                                            <button onClick={() => changeOrderStatus(order.id)} className='btnAdd'><i class="fa-solid fa-check"></i></button>
+                                        )}
                                         <button onClick={() => handleMoreClick(order.id)} className='btnEdit'>
                                             {visibleDetails[order.id] ? 'Ver menos' : 'Ver más'}
                                         </button>
@@ -116,8 +127,6 @@ const MainAdminPanel = () => {
                                     <div className='orderDetail'>
                                         <div className="gridContainer">
                                             <div className="gridHeader">Nombre</div>
-                                            <div className="gridHeader">Precio Total</div>
-                                            <div className="gridHeader">Cantidad</div>
                                         </div>
                                         {ordersDetail[order.id]?.map((orderDetail) => (
                                             <div key={orderDetail.id} className="gridRow">

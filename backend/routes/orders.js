@@ -63,17 +63,44 @@ router.patch('/:id', async (req, res) => {
         return res.status(400).json({ message: 'ID inválido' });
     }
     
-    const { id_client, id_table, totalPrice } = req.body;
-    const query = 'UPDATE orders SET id_client = ?, id_table = ?, totalPrice = ? WHERE id = ?';
+    const fields = [];
+    const values = [];
+    
+    if (req.body.id_client !== undefined) {
+        fields.push('id_client = ?');
+        values.push(req.body.id_client);
+    }
+    
+    if (req.body.id_table !== undefined) {
+        fields.push('id_table = ?');
+        values.push(req.body.id_table);
+    }
+    
+    if (req.body.totalPrice !== undefined) {
+        fields.push('totalPrice = ?');
+        values.push(req.body.totalPrice);
+    }
+
+    if(req.body.status !== undefined){
+        fields.push('status = ?');
+        values.push(req.body.status);
+    }
+    
+    if (fields.length === 0) {
+        return res.status(400).json({ message: 'No hay campos para actualizar' });
+    }
+    
+    values.push(orderId);
+    const query = `UPDATE orders SET ${fields.join(', ')} WHERE id = ?`;
     
     try {
-        const [result] = await pool.query(query, [id_client, id_table, totalPrice, orderId]);
+        const [result] = await pool.query(query, values);
         
         if (result.affectedRows === 0) {
             return res.status(404).json({ message: 'Orden no encontrada' });
         }
         
-        res.status(200).json({ id: orderId, id_client, id_table, totalPrice });
+        res.status(200).json({ id: orderId, ...req.body });
     } catch (error) {
         console.error('Error al actualizar la orden:', error);
         res.status(500).json({ message: 'Error al actualizar la orden', error: error.message });
