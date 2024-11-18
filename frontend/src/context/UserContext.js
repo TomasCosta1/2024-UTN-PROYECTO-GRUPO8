@@ -5,6 +5,7 @@ export const UserContext=createContext()
 
 export const UserProvider=({children}) => {
     const [user, setUser] = useState("");
+    const [userId, setUserId] = useState("");
     const [pass, setPass] = useState("");
     const [email, setEmail] = useState("");
     const [invitado, setInvitado] = useState(false);
@@ -21,6 +22,10 @@ export const UserProvider=({children}) => {
 
     const handleEmail = (prop) => {
         setEmail(prop);
+    }
+
+    const handleUserId = (prop) => {
+        setUserId(prop);
     }
 
     const handleInvitado = () => {
@@ -46,6 +51,7 @@ export const UserProvider=({children}) => {
                 const data = await response.json();
 
                 if (data.success) {
+                    handleUserId(data.id);
                 } else {
                     navigate("/login")
                 }
@@ -59,6 +65,8 @@ export const UserProvider=({children}) => {
         setEmail("");
         setPass("");
         setUser("");
+        setAdmin(false);
+        setInvitado(false);
     }
 
     return (
@@ -66,6 +74,7 @@ export const UserProvider=({children}) => {
         value={{
             user,
             pass,
+            userId,
             email,
             invitado,
             admin,
