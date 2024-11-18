@@ -12,8 +12,8 @@ const Header = () => {
             <nav>
                 <ul>
                     <li><Link to="/">Inicio</Link></li>
-                    <li><Link to="/">Sobre Nosotros</Link></li>
-                    <li><Link to="/">Contacto</Link></li>
+                    <li><Link to="/aboutUs">Sobre Nosotros</Link></li>
+                    <li><Link to="/contact">Contacto</Link></li>
                     {admin && <li><Link to="/admin">Admin Panel</Link></li>}
                 </ul>
             </nav>

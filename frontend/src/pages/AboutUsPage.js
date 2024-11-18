@@ -1,23 +1,22 @@
-import React, { useContext } from 'react';
-import ProductList from '../components/ProductList';
-import "../styles/ProductCard.css";
-import '../styles/ProductList.css';
+import React from "react";
+import AboutUs from "../components/AboutUs.js";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { UserContext, UserProvider } from '../context/UserContext';
+import { useContext } from "react";
 
-const Home = () => {
+const AboutUsPage = () => {
     const { verify } = useContext(UserContext);
     verify();
     return (
         <>
         <Header/>
         <div>
-            <ProductList />
+        <AboutUs/>
         </div>
         <Footer/> 
         </>
     );
 };
 
-export default Home;
+export default AboutUsPage;

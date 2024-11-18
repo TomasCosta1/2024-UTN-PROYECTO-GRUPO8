@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../config/database');
 const router = express.Router();
 
-// Obtener todos los clientes (sin pass)
+// Obtener todos los clientes (sin password)
 router.get('/', async (req, res) => {
     const query = 'SELECT id, name, email, points FROM clients;';
     
@@ -36,6 +36,26 @@ router.get('/:id', async (req, res) => {
     } catch (error) {
         console.error('Error al buscar el cliente:', error);
         res.status(500).json({ message: 'Error al buscar el cliente', error: error.message });
+    }
+});
+
+// Obtener el ID de un cliente por email
+router.get('/client-id/:email', async (req, res) => {
+    const { email } = req.params;
+
+    if (!email) {
+        return res.status(400).json({ error: 'El parámetro "email" es obligatorio.' });
+    }
+
+    try {
+        const [rows] = await pool.query('SELECT id FROM clients WHERE email = ?', [email]);
+    if (rows.length === 0) {
+        return res.status(404).json({ error: 'Cliente no encontrado.' });
+    }
+        return res.json({ id: rows[0].id });
+    } catch (error) {
+        console.error('Error al consultar la base de datos:', error);
+        return res.status(500).json({ error: 'Error interno del servidor.' });
     }
 });
 
