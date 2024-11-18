@@ -95,11 +95,30 @@ const MainAdminPanel = () => {
         fetchTables();
     }
 
+
     const changeOrderStatus = async (id) => {
         if (!window.confirm("¿Estás seguro de que deseas cambiar el estado de esta orden a 'Pagada'?")) {
             return;
         }
+
+        const order = orders.find((order) => order.id === id);
         await axios.patch(`http://localhost:3000/orders/${id}`, { status: 'Pagada' });
+
+        const clientId = order.id_client;
+        const pointsToAdd = order.totalPrice * 0.01;
+
+        try {
+            const response = await axios.get(`http://localhost:3000/clients/${clientId}`);
+            const client = response.data;
+            const currentPoints = client.points || 0;
+            const newPoints = currentPoints + pointsToAdd;
+
+            await axios.patch(`http://localhost:3000/clients/${clientId}`, { points: newPoints });
+            console.log('Puntos actualizados correctamente');
+        } catch (error) {
+            console.error('Error al actualizar los puntos del cliente:', error);
+        }
+
         fetchOrders();
     }
 

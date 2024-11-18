@@ -76,11 +76,10 @@ const PaymentForm = ({ total, tableNumber, cart, clearCart, handlePaymentState, 
     }
   };
 
-  const handlePaymentSuccess = async (result) => {
+  const handlePaymentSuccess = (result) => {
     console.log('Payment approved:', result);
     handleOrderState('approved');
-    await createOrder();
-    await updateClientPoints(); // Actualiza los puntos del cliente
+    createOrder();
   };
 
   const handlePaymentFailure = (error) => {
@@ -90,26 +89,6 @@ const PaymentForm = ({ total, tableNumber, cart, clearCart, handlePaymentState, 
     navigate("/clientOrder");
   };
 
-  const updateClientPoints = async () => {
-    try {
-
-      const responseEmail = await fetch(`http://localhost:3000/clients/client-id/${encodeURIComponent(email)}`);
-      const data = await responseEmail.json();
-      const clientId = data.id;
-
-      // Obtinee los puntos actuales del cliente y suma los nuevos puntos
-      const userResponse = await axios.get(`http://localhost:3000/clients/${clientId}`);
-      const currentPoints = userResponse.data.points;
-      
-      const user = {
-        points: currentPoints + total * 0.01,
-      };
-      await axios.patch(`http://localhost:3000/clients/${clientId}`, user);
-      console.log('Puntos actualizados correctamente');
-    } catch (error) {
-      console.error('Error al actualizar los puntos:', error);
-    }
-  };
 
   return (
     <CardPayment

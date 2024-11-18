@@ -10,18 +10,18 @@ return (
         <section class="contact-section">
         <div class="content">
             <h2>Queremos Escucharte</h2>
-            <p> Si tienes alguna pregunta, sugerencia, querés trabajar con nosotros o necesitas más información sobre nuestros servicios, no dudes en ponerte en contacto con nosotros.</p>
+            <p> Si tenés alguna pregunta, sugerencia, incoveniente con la aplicación o querés trabajar con nosotros, no dudes en ponerte en contacto. <br /><br /> Tu mensaje no molesta.</p>
         </div>
         <div class="content">
             <h2>Detalles de Contacto</h2>
-            <p class="contentDetalles">
+            <div class="contentDetalles">
             <p><b>Dirección:</b> Av. 60 1554 </p>
             <p><b>Ciudad:</b> Berisso, Provincia de Buenos Aires</p>
             <p><b>Teléfono:</b> (221) 123-4567</p>
             <p><b>Correo Electrónico:</b> contacto@gestion_restaurantelp.com.ar</p>
             <p><b>Instagram:</b> @Gestion_RestauranteLP</p> 
             <p><b>Facebook:</b> Gestion Restaurante La Plata</p>
-            </p>
+            </div>
         </div>
         </section>
         <h2 class="final">
