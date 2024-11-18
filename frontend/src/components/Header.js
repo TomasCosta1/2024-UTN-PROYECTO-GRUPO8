@@ -5,7 +5,7 @@ import { UserContext } from "../context/UserContext";
 
 
 const Header = () => {
-    const { admin } = useContext(UserContext);
+    const { admin, clearUser, user } = useContext(UserContext);
     return (
         <header>
             <h1>Gestor de Restaurant</h1>
@@ -15,6 +15,7 @@ const Header = () => {
                     <li><Link to="/">Sobre Nosotros</Link></li>
                     <li><Link to="/">Contacto</Link></li>
                     {admin && <li><Link to="/admin">Admin Panel</Link></li>}
+                    {user && <button onClick={clearUser}><i class="fa-solid fa-right-from-bracket"></i></button>}
                 </ul>
             </nav>
         </header>
