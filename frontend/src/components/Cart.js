@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Cart.css";
 
-const Cart = () => {
+const Cart = ({ email }) => {
   const navigate = useNavigate();
   const {
     cart,
@@ -13,7 +13,7 @@ const Cart = () => {
     sub1Product,
     total,
     clearCart,
-    handleOrderNumber,
+    handleOrderNumber, 
     handleOrderState,
     tableNumber,
     handleTableNumber,
@@ -22,8 +22,11 @@ const Cart = () => {
   const [paymentOption, setPaymentOption] = useState("");
 
   const createOrder = async () => {
+    const responseEmail = await fetch (`http://localhost:3000/clients/client-id/${encodeURIComponent(email)}`);
+    const data = await responseEmail.json();
+    const clientId = data.id;
     const order = {
-      id_client: 1,
+      id_client: clientId,
       id_table: tableNumber,
       totalPrice: total,
     };

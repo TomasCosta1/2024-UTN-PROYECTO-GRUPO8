@@ -7,7 +7,7 @@ import { UserContext } from "../context/UserContext";
 
 const PaymentPage = () => {
 
-  const { verify } = useContext(UserContext);
+  const { verify, email } = useContext(UserContext);
   verify();
 
 
@@ -32,6 +32,7 @@ const PaymentPage = () => {
           handlePaymentState={handlePaymentState}
           handleOrderNumber={handleOrderNumber}
           handleOrderState={handleOrderState}
+          email={email}
         />
       </div>
       <Footer />

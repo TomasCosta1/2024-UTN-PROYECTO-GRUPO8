@@ -4,7 +4,7 @@ import "../styles/ProductCard.css";
 import '../styles/ProductList.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { UserContext, UserProvider } from '../context/UserContext';
+import { UserContext } from '../context/UserContext';
 
 const Home = () => {
     const { verify } = useContext(UserContext);
@@ -15,7 +15,7 @@ const Home = () => {
         <div>
             <ProductList />
         </div>
-       <Footer/> 
+        <Footer/> 
         </>
     );
 };

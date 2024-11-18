@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 import { UserContext } from "../context/UserContext";
 
 const CartPage = () => {
-    const { verify } = useContext(UserContext);
+    const { verify, email } = useContext(UserContext);
     verify();
     return(
         <div>
             <Header />
-            <Cart />
+            <Cart email={email} />
             <Footer />
         </div>
     )

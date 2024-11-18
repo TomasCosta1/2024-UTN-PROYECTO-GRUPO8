@@ -8,6 +8,8 @@ import CartPage from "./pages/CartPage";
 import RegisterPage from "./pages/RegisterPage";
 import PaymentPage from './pages/PaymentPage';
 import ClientOrderPage from './pages/OrderPage';
+import AboutUsPage from './pages/AboutUsPage';
+import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
 import { CartProvider } from "./context/CartContext";
 import { UserProvider } from './context/UserContext';
@@ -27,6 +29,8 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path='/payment' element={<PaymentPage />} />
             <Route path='/clientOrder' element={<ClientOrderPage />} />
+            <Route path="/aboutUs" element={<AboutUsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path='/profile' element={<ProfilePage />} />
           </Routes>
         </div>

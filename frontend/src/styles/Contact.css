@@ -1,0 +1,91 @@
+.contact {
+    height: 67.3vh;
+    overflow: hidden;
+}
+
+.contact {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.contact h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1c5985;
+    font-family: 'Great Vibes', Arial, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.contact .contact-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    max-height: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+}
+
+.contact .content {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.contact .content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact .content h2 {
+    font-size: 24px;
+    color: #1c5985;
+    margin-bottom: 15px;
+}
+
+.contact .content p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.contact form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.contact form input, .contact form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.contact .contentDetalles p {
+    margin: 10px 0;
+}
+
+.contact .final {
+    font-size: 24px;
+    color: #1c5985;
+    margin: 2rem;
+    text-align: center;
+    font-style: italic;
+}
